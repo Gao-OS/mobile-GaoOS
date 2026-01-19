@@ -8,7 +8,7 @@ to do your first-time install.
 The device page for the supported devices will describe the requirements
 for the installer.
 
-* [Pine64 PinePhone](devices/pine64-pinephone.md)
+* [Pine64 PinePhone Pro](devices/pine64-pinephonepro.md)
 
 ## Other options
 

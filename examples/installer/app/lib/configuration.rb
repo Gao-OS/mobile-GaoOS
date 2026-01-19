@@ -29,21 +29,6 @@ module Configuration
         case compatible
         when /^pine64,pinephone-pro/
           return "pine64-pinephonepro"
-        when /^pine64,pinephone/
-          return "pine64-pinephone"
-        when /^pine64,pinetab/
-          return "pine64-pinetab"
-        when /^google,juniper/
-          return "acer-juniper"
-        when /^google,krane/
-          return "lenovo-krane"
-        when /^google,lazor/
-          return "acer-lazor"
-        when /^google,wormdingler/
-          return "lenovo-wormdingler"
-        when /^google,scarlet/
-          # TODO: detect the actual scarlet model...
-          return "asus-dumo"
         end
       end
 
@@ -71,10 +56,8 @@ module Configuration
     # TODO: move with the device detection into generic data-driven config.
     def system_type()
       case identifier
-      when "pine64-pinephone", "pine64-pinetab", "pine64-pinephonepro"
+      when "pine64-pinephonepro"
         return "u-boot"
-      when "acer-juniper", "acer-lazor", "lenovo-krane", "lenovo-wormdingler", "asus-dumo"
-        return "depthcharge"
       end
 
       # Safe~ish default
@@ -93,18 +76,9 @@ module Configuration
 
       path =
         case identifier
-        when "pine64-pinephone", "pine64-pinetab"
-          # Allwinner A64 eMMC
-          File.join("/dev/disk/by-path", "platform-1c11000.mmc")
-        when "asus-dumo", "pine64-pinephonepro"
+        when "pine64-pinephonepro"
           # RK3399 eMMC
           File.join("/dev/disk/by-path", "platform-fe330000.mmc")
-        when "acer-juniper", "lenovo-krane"
-          # MT8183 eMMC
-          File.join("/dev/disk/by-path", "platform-11230000.mmc")
-        when "acer-lazor", "lenovo-wormdingler"
-          # Qualcomm 7c eMMC
-          File.join("/dev/disk/by-path", "platform-7c4000.mmc")
         when "qemu-uefi"
           # QEMU using e.g. `./result -drive "file=target.img"` for a second drive.
           File.join("/dev/disk/by-id/", "ata-QEMU_HARDDISK_QM00002")

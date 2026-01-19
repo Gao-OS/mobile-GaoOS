@@ -6,12 +6,12 @@ import ../../lib/eval-with-configuration.nix (args // {
   additionalHelpInstructions = { device }: ''
     The build output to choose depends on the target.
 
-    Pinephone, other u-boot, and depthcharge devices: 
+    Pine64 PinePhone Pro and other u-boot devices:
 
       $ nix-build examples/installer --argstr device ${device} -A outputs.default
 
     App "simulator":
 
-      $ nix-build examples/installer --argstr device uefi-x86_64 -A ouptuts.app-simulator
+      $ nix-build examples/installer --argstr device pine64-pinephonepro -A outputs.app-simulator
   '';
 })

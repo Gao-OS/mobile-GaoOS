@@ -27,11 +27,8 @@ nix-build --argstr device <device-name> -A outputs.default
 ### Available Devices
 
 Device names match directory names under `devices/`:
-- `pine64-pinephone`, `pine64-pinephonepro`, `pine64-pinetab`
-- `motorola-potter`, `oneplus-enchilada`, `oneplus-fajita`
-- `asus-dumo`, `lenovo-krane`, `lenovo-wormdingler`
-- `acer-juniper`, `acer-lazor`
-- `uefi-x86_64` (generic UEFI systems)
+- `oneplus-enchilada` (OnePlus 6, Android-based, SDM845 SoC)
+- `pine64-pinephonepro` (Pine64 PinePhone Pro, U-Boot based, RK3399S SoC)
 
 ### Example Systems
 
@@ -73,10 +70,8 @@ nix-shell  # Provides: autoport, android-tools, dtc, mkbootimg, binwalk, etc.
 ### System Types
 
 Devices declare a system type in `mobile.system.type` that determines boot outputs:
-- `android` - Android boot image format
-- `u-boot` - U-Boot bootloader
-- `depthcharge` - ChromeOS depthcharge
-- `uefi` - Standard UEFI boot
+- `android` - Android boot image format (used by oneplus-enchilada)
+- `u-boot` - U-Boot bootloader (used by pine64-pinephonepro)
 
 ### Evaluation Entry Points
 
@@ -110,4 +105,4 @@ The system auto-detects cross-compilation needs based on device architecture.
 4. Set the appropriate system type
 5. Use `nix-shell` and the `autoport` tool for assistance
 
-Refer to existing devices like `pine64-pinephone` as templates.
+Refer to existing devices like `pine64-pinephonepro` or `oneplus-enchilada` as templates.

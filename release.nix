@@ -238,9 +238,6 @@ rec {
   };
 
   installer = {
-    lenovo-krane = (evalInstaller { device = "lenovo-krane"; localSystem = "aarch64-linux"; }).outputs.default;
-    lenovo-wormdingler = (evalInstaller { device = "lenovo-wormdingler"; localSystem = "aarch64-linux"; }).outputs.default;
-    pine64-pinephone = (evalInstaller { device = "pine64-pinephone"; localSystem = "aarch64-linux"; }).outputs.default;
     pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; localSystem = "aarch64-linux"; }).outputs.default;
   };
 
@@ -267,10 +264,7 @@ rec {
 
   cross-compiled = {
     installer = {
-      lenovo-krane = (evalInstaller { device = "lenovo-krane"; localSystem = "x86_64-linux"; }).outputs.default;
-      lenovo-wormdingler = (evalInstaller { device = "lenovo-wormdingler"; localSystem = "x86_64-linux"; }).outputs.default;
-      pine64-pinephone = (evalInstaller { device = "pine64-pinephone"; localSystem = "x86_64-linux"; }).outputs.default;
-      pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; localSystem = "aarch64-linux"; }).outputs.default;
+      pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; localSystem = "x86_64-linux"; }).outputs.default;
     };
   };
 
@@ -280,11 +274,9 @@ rec {
     constituents =
       cross-canaries.aarch64-linux.constituents
       ++ lib.optionals (hasSystem "x86_64-linux") [
-        device.uefi-x86_64.x86_64-linux              # UEFI system
-
         # Cross builds
-        device.motorola-potter.x86_64-linux          # Android
-        device.asus-dumo.x86_64-linux                # Depthcharge
+        device.oneplus-enchilada.x86_64-linux        # Android (OnePlus 6)
+        device.pine64-pinephonepro.x86_64-linux      # U-Boot (PinePhone Pro)
 
         # Example systems
         examples.hello.x86_64-linux.toplevel
@@ -296,15 +288,15 @@ rec {
         overlay.x86_64-linux.aarch64-linux-cross.mobile-gaoos.android-flashable-zip-binaries
       ]
       ++ lib.optionals (hasSystem "aarch64-linux") [
-        device.motorola-potter.aarch64-linux         # Android
-        device.asus-dumo.aarch64-linux               # Depthcharge
+        device.oneplus-enchilada.aarch64-linux       # Android (OnePlus 6)
+        device.pine64-pinephonepro.aarch64-linux     # U-Boot (PinePhone Pro)
 
         # Example systems
         examples.hello.aarch64-linux.toplevel
         examples.phosh.aarch64-linux.toplevel
         examples.plasma-mobile.aarch64-linux.toplevel
 
-        installer.pine64-pinephone
+        installer.pine64-pinephonepro
 
         # Flashable zip binaries are universal for a platform.
         overlay.aarch64-linux.aarch64-linux.mobile-gaoos.android-flashable-zip-binaries
