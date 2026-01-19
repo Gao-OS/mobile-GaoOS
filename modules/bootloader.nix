@@ -11,10 +11,10 @@ in
           type = types.bool;
           default = config.mobile.enable;
           description = ''
-            Whether the bootloader **configuration** for Mobile NixOS
+            Whether the bootloader **configuration** for Mobile GaoOS
             is enabled.
 
-            Installation and management of the Mobile NixOS bootloading
+            Installation and management of the Mobile GaoOS bootloading
             components is not implemented at this point in time.
             (e.g. flashing boot.img on android, boot partition on other systems.)
           '';

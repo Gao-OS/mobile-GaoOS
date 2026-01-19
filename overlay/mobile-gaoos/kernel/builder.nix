@@ -1,5 +1,5 @@
 #
-# mobile-nixos kernel builder
+# mobile-gaoos kernel builder
 # ===========================
 #
 # The goal of this kernel builder is to cover most of the kernels with a
@@ -64,7 +64,7 @@
 
 # When set to true, the kernel build will be failed when the kernel
 # config differs from expected.
-, __mobile-nixos-useStrictKernelConfig ? false
+, __mobile-gaoos-useStrictKernelConfig ? false
 
 # Only the logo file has to be overridable; the enable/disable flags are part
 # of the builder signature such that if enabling the logo replacement causes
@@ -210,10 +210,10 @@ stdenv.mkDerivation (inputArgs // {
 
   # Allows disabling the kernel config normalization.
   # Set to false when normalizing the kernel config.
-  forceNormalizedConfig = __mobile-nixos-useStrictKernelConfig;
+  forceNormalizedConfig = __mobile-gaoos-useStrictKernelConfig;
 
   # Allows updating the kernel config to conform to the structured config.
-  updateConfigFromStructuredConfig = !__mobile-nixos-useStrictKernelConfig;
+  updateConfigFromStructuredConfig = !__mobile-gaoos-useStrictKernelConfig;
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   nativeBuildInputs = [ perl bc nettools openssl rsync gmp libmpc mpfr ]
@@ -225,7 +225,7 @@ stdenv.mkDerivation (inputArgs // {
     ++ optional  (lib.versionAtLeast version "5.2")  cpio
     ++ optional  (lib.versionAtLeast version "5.8")  elfutils
     ++ optional  (isCompressed == "lz4") lz4
-    # Mobile NixOS inputs.
+    # Mobile GaoOS inputs.
     # While some kernels might not need those, most will.
     ++ [ dtc ]
     ++ optional isQcdt dtbTool
@@ -530,7 +530,7 @@ stdenv.mkDerivation (inputArgs // {
     "HOSTCC=${buildPackages.stdenv.cc}/bin/${buildPackages.stdenv.cc.targetPrefix}cc"
     "ARCH=${platform.linuxArch}"
     "DTC_EXT=${buildPackages.dtc}/bin/dtc"
-    "KBUILD_BUILD_VERSION=1-mobile-nixos"
+    "KBUILD_BUILD_VERSION=1-mobile-gaoos"
   ]
   # Use platform-specific flags
   ++ lib.optionals (platform ? kernelMakeFlags) platform.kernelMakeFlags

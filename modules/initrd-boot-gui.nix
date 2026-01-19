@@ -75,26 +75,26 @@ in
     {
       assertions = [
         {
-          # When the Mobile NixOS stage-1 is in use, valid configurations are either:
+          # When the Mobile GaoOS stage-1 is in use, valid configurations are either:
           #   - GUI enabled (luks or not, don't care).
           #   - No LUKS.
           assertion = cfg.enable || (luks.devices == {} && !luks.forceLuksSupportInInitrd);
-          message = "With the Mobile NixOS stage-1, the boot GUI needs to be enabled to use LUKS.";
+          message = "With the Mobile GaoOS stage-1, the boot GUI needs to be enabled to use LUKS.";
         }
       ];
     }
     (mkIf cfg.enable {
       mobile.boot.stage-1.contents = [
         {
-          object = "${pkgs.mobile-nixos.stage-1.boot-error}/libexec/boot-error.mrb";
+          object = "${pkgs.mobile-gaoos.stage-1.boot-error}/libexec/boot-error.mrb";
           symlink = "/applets/boot-error.mrb";
         }
         {
-          object = "${pkgs.mobile-nixos.stage-1.boot-splash}/libexec/boot-splash.mrb";
+          object = "${pkgs.mobile-gaoos.stage-1.boot-splash}/libexec/boot-splash.mrb";
           symlink = "/applets/boot-splash.mrb";
         }
         {
-          object = "${pkgs.mobile-nixos.stage-1.boot-recovery-menu}/libexec/boot-recovery-menu.mrb";
+          object = "${pkgs.mobile-gaoos.stage-1.boot-recovery-menu}/libexec/boot-recovery-menu.mrb";
           symlink = "/applets/boot-selection.mrb";
         }
         {

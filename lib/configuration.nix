@@ -1,13 +1,13 @@
 # This file is intended to be included in your system's `configuration.nix`.
 # Given a device name, it will import the appropriate device configuration, and
-# all the modules from Mobile NixOS.
+# all the modules from Mobile GaoOS.
 #
-# Assuming NIX_PATH contains `mobile-nixos`:
+# Assuming NIX_PATH contains `mobile-gaoos`:
 #
 # ```
 # {
 #   imports = [
-#     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
+#     (import <mobile-gaoos/lib/configuration.nix> { device = "xxx-yyy"; })
 #   ];
 # }
 # ```

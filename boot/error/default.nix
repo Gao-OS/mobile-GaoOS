@@ -1,4 +1,4 @@
-{ lib, runCommand, mobile-nixos }:
+{ lib, runCommand, mobile-gaoos }:
 
 let
   assets = runCommand "boot-error-assets" {} ''
@@ -6,7 +6,7 @@ let
     cp ${../../artwork/sad.svg} $out/sad.svg
   '';
 in
-mobile-nixos.mkLVGUIApp {
+mobile-gaoos.mkLVGUIApp {
   name = "boot-error.mrb";
   executablePath = "libexec/boot-error.mrb";
   src = lib.cleanSource ./.;

@@ -52,7 +52,7 @@ in
       }
     ];
 
-    # When evaluating with the Mobile NixOS defaults disabled, we want
+    # When evaluating with the Mobile GaoOS defaults disabled, we want
     # to use the `none` type so evaluation can continue.
     # Otherwise we want to error on an unset value if not set.
     mobile.system.type = mkIf (!config.mobile.enable) (

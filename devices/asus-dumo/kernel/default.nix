@@ -1,5 +1,5 @@
 {
-  mobile-nixos
+  mobile-gaoos
 , fetchFromGitHub
 , fetchpatch
 , ...
@@ -11,7 +11,7 @@ let
     inherit sha256;
   };
 in
-mobile-nixos.kernel-builder {
+mobile-gaoos.kernel-builder {
   version = "5.10.0";
   configfile = ./config.aarch64;
 

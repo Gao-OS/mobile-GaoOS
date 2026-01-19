@@ -1,7 +1,7 @@
 // Required to be included, in both adoc and md inputs.
 // This `{doctitle}` replacement cannot happen at the CLI input
-:title: {doctitle} — Mobile NixOS
-:repo: mobile-nixos/mobile-nixos
+:title: {doctitle} — Mobile GaoOS
+:repo: mobile-gaoos/mobile-gaoos
 :relative_prefix: doc
 :source-highlighter: rouge
 :docinfo: shared

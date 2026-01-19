@@ -13,7 +13,7 @@ rec {
     (builtins.attrNames (builtins.readDir ../devices))
   ;
 
-  # Evaluates NixOS, mobile-nixos and the device config with the given
+  # Evaluates NixOS, mobile-gaoos and the device config with the given
   # additional modules.
   # Note that we can receive a "special" configuration, used internally by
   # `release.nix` and not part of the public API.

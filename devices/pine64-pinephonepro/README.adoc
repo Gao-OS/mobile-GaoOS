@@ -12,7 +12,7 @@ The only *supported* platform firmware configuration is to link:https://tow-boot
 The installer can be downloaded and flashed to an SD card.
 
 ```
- $ dd if=mobile-nixos_pine64-pinephonepro_installer.img of=/dev/sdX bs=8M oflag=sync,direct status=progress
+ $ dd if=mobile-gaoos_pine64-pinephonepro_installer.img of=/dev/sdX bs=8M oflag=sync,direct status=progress
 ```
 
 When using Tow-Boot, hold _volume down_ during boot to boot from the SD card.
@@ -85,5 +85,5 @@ This image will not be compatible with the boot partition created by the install
 
 ```
  $ nix-build --argstr device pine64-pinephonepro -A build.boot-partition
- $ dd if=result/mobile-nixos-boot.img of=/dev/mmcblkXpY bs=8M oflag=sync,direct status=progress
+ $ dd if=result/mobile-gaoos-boot.img of=/dev/mmcblkXpY bs=8M oflag=sync,direct status=progress
 ```

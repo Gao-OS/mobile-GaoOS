@@ -16,7 +16,7 @@ module Installer
       end
     else
       Edify.ui_print("ERROR: Could not find #{name} in zip file.")
-      Edify.ui_print("Aborting Mobile NixOS Flashable Zip...")
+      Edify.ui_print("Aborting Mobile GaoOS Flashable Zip...")
     end
   end
 end

@@ -21,7 +21,7 @@ in
     ];
     mobile.hardware.socs."${cfg.soc}".enable = true;
 
-    # When evaluating with the Mobile NixOS defaults disabled, we want
+    # When evaluating with the Mobile GaoOS defaults disabled, we want
     # to use the a generic type so evaluation can continue.
     # Otherwise we want to error on an unset value if not set.
     mobile.hardware.soc = mkIf (!config.mobile.enable) (

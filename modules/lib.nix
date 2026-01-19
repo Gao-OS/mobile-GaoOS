@@ -2,7 +2,7 @@
 
 {
   lib = {
-    mobile-nixos = {
+    mobile-gaoos = {
       # This was the previously supported method used to re-evaluate a
       # configuration with additional configuration.
       composeConfig = { config ? {}, modules ? [] }:

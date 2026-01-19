@@ -13,7 +13,7 @@ definition, the inode tables are zeroed on creation.
 
 * * *
 
-Provenance information, for Mobile NixOS:
+Provenance information, for Mobile GaoOS:
 
 This patch comes from the OpenWRT forum.
 

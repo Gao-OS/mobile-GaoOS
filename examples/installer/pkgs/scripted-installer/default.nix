@@ -1,6 +1,6 @@
 { lib
 , fetchurl
-, mobile-nixos
+, mobile-gaoos
 , symlinkJoin
 
 , coreutils
@@ -25,7 +25,7 @@ let
   makeApplet = script:
     let
       src = cleanSource ./.;
-      app =  mobile-nixos.mkLVGUIApp {
+      app =  mobile-gaoos.mkLVGUIApp {
         name = "${script}.mrb";
         enableDebugInformation = true;
         inherit src;
@@ -37,7 +37,7 @@ let
         ];
       };
     in
-    mobile-nixos.script-loader.wrap {
+    mobile-gaoos.script-loader.wrap {
       name = script;
       applet = "${app}/libexec/app.mrb";
       env = {

@@ -36,7 +36,7 @@ passphrase during boot.
 How is success defined?
 -----------------------
 
-Assuming you are `cd`'d into the root of a Mobile NixOS checkout:
+Assuming you are `cd`'d into the root of a Mobile GaoOS checkout:
 
 ```
 nix-build ./examples/testing/qemu-cryptsetup && ./result

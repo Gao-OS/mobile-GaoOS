@@ -17,7 +17,7 @@ let
     inherit (config.mobile.system.android) bootimg;
     inherit cmdline;
     inherit (config.mobile.outputs) initrd;
-    name = "mobile-nixos_${device.name}_${bootimg.name}";
+    name = "mobile-gaoos_${device.name}_${bootimg.name}";
     kernel = "${kernelPackage}/${kernelPackage.file}";
     inherit (config.mobile.system.android) appendDTB;
   };

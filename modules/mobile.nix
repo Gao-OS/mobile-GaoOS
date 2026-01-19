@@ -19,7 +19,7 @@ in
       };
       configurationName = mkOption {
         internal = true;
-        default = "mobile-nixos";
+        default = "mobile-gaoos";
         description = ''
           Used for some identifiers like the image name.
 

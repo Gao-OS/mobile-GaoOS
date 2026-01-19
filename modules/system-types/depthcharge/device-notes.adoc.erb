@@ -9,7 +9,7 @@ your device can boot from.
 
 == Installation
 
-This one is annoying to get started currently. Without a full Mobile NixOS
+This one is annoying to get started currently. Without a full Mobile GaoOS
 build, you will need to fill in some gaps manually.
 
 The link:https://www.chromium.org/chromium-os/chromiumos-design-docs/disk-format[
@@ -25,4 +25,4 @@ updating the kernel and the stage-1 boot program.
  $ nix-build --argstr device <%= info["identifier"] %> -A outputs.kpart
 
 This can be `dd`'d over the first partition on an existing storage media
-containing a Mobile NixOS installation.
+containing a Mobile GaoOS installation.

@@ -8,18 +8,18 @@ let
   dtbMapping = pkgs.runCommand "dtb-mapping.json" {} ''
     (
       PS4=" $ "; set -x
-      ${pkgs.buildPackages.mobile-nixos.map-dtbs}/bin/map-dtbs $(find ${config.hardware.deviceTree.package} -name '*.dtb' | sort) > $out
+      ${pkgs.buildPackages.mobile-gaoos.map-dtbs}/bin/map-dtbs $(find ${config.hardware.deviceTree.package} -name '*.dtb' | sort) > $out
     )
   '';
 in
 {
   config = mkIf (config.mobile.enable && !config.mobile.rootfs.shared.enabled) {
     system.extraSystemBuilderCmds = ''
-      echo ":: Adding Mobile NixOS information to the build..."
+      echo ":: Adding Mobile GaoOS information to the build..."
       (
         PS4=" $ "; set -x
-        mkdir -p $out/mobile-nixos
-        cd $out/mobile-nixos
+        mkdir -p $out/mobile-gaoos
+        cd $out/mobile-gaoos
         echo "${deviceName}" > device-name
         ${optionalString (config.hardware.deviceTree.package != null) ''
           ln -s ${dtbMapping} dtb-mapping.json

@@ -15,13 +15,13 @@ for the installer.
 == Other options
 
 This guide assumes the user knows how to prepare their device for development
-use. These instructions are device-dependent, but not specific to Mobile NixOS.
+use. These instructions are device-dependent, but not specific to Mobile GaoOS.
 
 Briefly said, the device's bootloader must be unlocked, meaning that it allows
 running custom-built operating system images.
 
-The project is hosted under the link:https://github.com/mobile-nixos/[Mobile NixOS organization],
-as link:https://github.com/mobile-nixos/mobile-nixos[mobile-nixos].
+The project is hosted under the link:https://github.com/mobile-gaoos/[Mobile GaoOS organization],
+as link:https://github.com/Gao-OS/Mobile-GaoOS[mobile-gaoos].
 
 === Getting the sources
 
@@ -29,13 +29,13 @@ Depending on your configuration, for users with a GitHub account and the proper
 ssh configuration.
 
 ```
-$ git clone git@github.com:mobile-nixos/mobile-nixos.git
+$ git clone git@github.com:mobile-gaoos/mobile-gaoos.git
 ```
 
 Or, for everyone else.
 
 ```
-$ git clone https://github.com/mobile-nixos/mobile-nixos.git
+$ git clone https://github.com/Gao-OS/Mobile-GaoOS.git
 ```
 
 Nothing else! Everything required is self-contained.
@@ -66,7 +66,7 @@ The npins reference will be updated from time-to-time, but any breakage with
 == Customizing
 
 You probably will want to toggle options and such things when fiddling with
-Mobile NixOS, at first. The repository is structured in a way to allow you to
+Mobile GaoOS, at first. The repository is structured in a way to allow you to
 add options to an untracked `local.nix` file. The default `nix-build`
 invocations will respect the content of that file as your configuration.
 
@@ -81,30 +81,30 @@ A sample `local.nix`.
 }
 ```
 
-As Mobile NixOS is a superset on top of NixOS, all NixOS options can be used in
+As Mobile GaoOS is a superset on top of NixOS, all NixOS options can be used in
 this configuration file, though take note that most NixOS options will only
 affect the stage-2 (rootfs, system.img) build.
 
 The <<options/index.adoc#,Options list>> page will be useful, as it provides an
-overview of all the Mobile NixOS specific options.
+overview of all the Mobile GaoOS specific options.
 
 
 == Using in your system configuration
 
-As the Mobile NixOS configuration may include fixes and quirks for your device,
+As the Mobile GaoOS configuration may include fixes and quirks for your device,
 it is useful to include its configuration into your system's
 `configuration.nix`.
 
-Assuming your `NIX_PATH` includes `mobile-nixos=/path/to/mobile-nixos` you can
-import the Mobile NixOS configuration for your device by doing the following.
+Assuming your `NIX_PATH` includes `mobile-gaoos=/path/to/mobile-gaoos` you can
+import the Mobile GaoOS configuration for your device by doing the following.
 
 ```nix
 # configuration.nix
 {
-  # "xxx-yyy" is your device "Identifier" from https://mobile-nixos.github.io/devices,
+  # "xxx-yyy" is your device "Identifier" from https://Gao-OS.github.io/Mobile-GaoOS/devices,
   # e.g. "google-marlin".
   imports = [
-    (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
+    (import <mobile-gaoos/lib/configuration.nix> { device = "xxx-yyy"; })
     # ...
   ];
 

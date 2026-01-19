@@ -27,7 +27,7 @@ The crashing happens *after* mounting /mnt, but *before* switching root.
 Running
 -------
 
-Assuming you are `cd`'d into the root of a Mobile NixOS checkout:
+Assuming you are `cd`'d into the root of a Mobile GaoOS checkout:
 
 ```
 nix-build ./examples/testing/crash-before-switch-root && ./result

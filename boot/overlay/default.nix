@@ -4,13 +4,13 @@ let
     callPackage
   ;
 in
-# NOTE: This overlay is scoped to only be used in practice by `mobile-nixos.stage-1`.
+# NOTE: This overlay is scoped to only be used in practice by `mobile-gaoos.stage-1`.
 #       See `overlay/overaly.nix` for how it's used.
 {
-  mobile-nixos = super.mobile-nixos // {
+  mobile-gaoos = super.mobile-gaoos // {
     stage-1 = {
       # Inherits the script-loader now customized with the slimmed deps.
-      inherit (final.mobile-nixos) script-loader;
+      inherit (final.mobile-gaoos) script-loader;
       boot-recovery-menu = callPackage ../recovery-menu {};
       boot-error = callPackage ../error {};
       boot-splash = callPackage ../splash {};

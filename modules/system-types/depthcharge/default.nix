@@ -103,7 +103,7 @@ in
           disk-image = mkOption {
             type = types.package;
             description = ''
-              Full Mobile NixOS disk image for a depthcharge-based system.
+              Full Mobile GaoOS disk image for a depthcharge-based system.
             '';
             visible = false;
           };

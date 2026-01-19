@@ -49,7 +49,7 @@ let
 in
 # We need a reference to this package for the passthru `wrap` helper.
 let loader = mruby'.builder {
-  pname = "mobile-nixos-script-loader";
+  pname = "mobile-gaoos-script-loader";
   version = "0.2.0";
 
   src = ./.;

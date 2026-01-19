@@ -1,7 +1,7 @@
 # This is a shim that calls `evalWithConfiguration` automatically, with
 # some additional helpers.
 # This replaces the previously quite un-hermetic `default.nix` inclusion.
-# This is meant for use internally by Mobile NixOS, the interface here
+# This is meant for use internally by Mobile GaoOS, the interface here
 # should not be assumed to be *stable*.
 #
 # This file is also used to provide common in-repository arguments parsing

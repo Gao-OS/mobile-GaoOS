@@ -8,7 +8,7 @@ let
   device_name = config.mobile.device.name;
   cfg = config.mobile.boot.stage-1.ssh;
   banner = pkgs.writeText "${device_name}-banner" ''
-    From a mobile-nixos device ${device_name}
+    From a mobile-gaoos device ${device_name}
   '';
 in
 {

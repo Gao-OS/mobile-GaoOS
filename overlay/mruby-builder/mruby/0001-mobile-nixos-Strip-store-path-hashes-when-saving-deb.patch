@@ -1,7 +1,7 @@
 From 6dab6fb118ece6c47e0407d4a7aa80e842b3747d Mon Sep 17 00:00:00 2001
 From: Samuel Dionne-Riel <samuel@dionne-riel.com>
 Date: Mon, 15 Feb 2021 23:18:06 -0500
-Subject: [PATCH] [mobile-nixos] Strip store path hashes when saving debug
+Subject: [PATCH] [mobile-gaoos] Strip store path hashes when saving debug
  information
 
 This is required for breaking the dependency on the source files, as

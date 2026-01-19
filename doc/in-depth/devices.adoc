@@ -155,4 +155,4 @@ expected to be completed by their devices.
 Families are not a module, like systems and platforms, as they would incur
 additional cost during the evaluation for not much gain. Seen in another way,
 families are an implementation detail of a device, and not an intrinsic part of
-the architecture of the Mobile NixOS project.
+the architecture of the Mobile GaoOS project.

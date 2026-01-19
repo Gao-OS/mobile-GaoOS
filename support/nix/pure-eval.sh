@@ -2,7 +2,7 @@
 
 #
 # Works around the fact pure evaluation handling outside of Flakes is inconvenient.
-# This ***will*** fill your Nix store with mobile-nixos inputs.
+# This ***will*** fill your Nix store with mobile-gaoos inputs.
 #
 
 set -e

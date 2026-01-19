@@ -1,10 +1,10 @@
 {
-  mobile-nixos
+  mobile-gaoos
 , fetchFromGitLab
 , ...
 }:
 
-mobile-nixos.kernel-builder {
+mobile-gaoos.kernel-builder {
   version = "6.4.7";
   configfile = ./config.aarch64;
 

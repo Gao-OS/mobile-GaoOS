@@ -18,7 +18,7 @@ module GUI
 
       add_text(%Q{
         If you continue with the next step, the internal storage of your device
-        will be erased, and formatted anew with a fresh Mobile NixOS install.
+        will be erased, and formatted anew with a fresh Mobile GaoOS install.
 
         This can lead to data loss if you have not backed up any of your
         personal data from an installed system on this device.

@@ -10,7 +10,7 @@ PROGRESS_UPDATE_LENGTH = 500
 
 VERBOSE = !!Args.get(:verbose, false)
 SKIP_FADEIN = !!Args.get(:skip_fadein, false)
-SOCKET = File.expand_path(Args.get(:socket, "/run/mobile-nixos-init"))
+SOCKET = File.expand_path(Args.get(:socket, "/run/mobile-gaoos-init"))
 
 # Create the UI
 ui = UI.new

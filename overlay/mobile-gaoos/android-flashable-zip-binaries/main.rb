@@ -21,7 +21,7 @@ end
 
 # Write something quite unique, so `/tmp/recovery.log` can be cut from the
 # last occurence of said string to more easily debug issues.
-$stdout.puts "----- mobile-nixos-flashable-zip -----"
+$stdout.puts "----- mobile-gaoos-flashable-zip -----"
 
 $zip_path = ARGV[2]
 

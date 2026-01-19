@@ -10,11 +10,11 @@ module GUI
 
 text = <<EOF
 
-Your device booted in the Mobile NixOS installer image.
+Your device booted in the Mobile GaoOS installer image.
 
 Don't worry, nothing has been done yet.
 
-If you are not ready to install Mobile NixOS on your device at this moment, choose the "Cancel and power off" option at the bottom of this menu.
+If you are not ready to install Mobile GaoOS on your device at this moment, choose the "Cancel and power off" option at the bottom of this menu.
 
 Otherwise, "Continue to the installer".
 

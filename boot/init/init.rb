@@ -4,7 +4,7 @@ STAGE = Configuration["stage"]
 LOADER = "/loader"
 
 log("************************")
-log("* Mobile NixOS stage-#{STAGE} *")
+log("* Mobile GaoOS stage-#{STAGE} *")
 log("************************")
 log("")
 # Since we would like to *somewhat* guesstimate how long it took to get to the

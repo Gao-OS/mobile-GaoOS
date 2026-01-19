@@ -19,7 +19,7 @@ let
 
   bootcmd = pkgs.writeText "${deviceName}-boot.cmd" ''
     echo ****************
-    echo * Mobile NixOS *
+    echo * Mobile GaoOS *
     echo ****************
     echo
     echo Built for ${deviceName}
@@ -70,10 +70,10 @@ let
 
     echo ":: Booting from partition $bootpart"
 
-    if load ''${devtype} ''${devnum}:''${bootpart} ''${kernel_addr_r} /mobile-nixos/boot/kernel; then
+    if load ''${devtype} ''${devnum}:''${bootpart} ''${kernel_addr_r} /mobile-gaoos/boot/kernel; then
       setenv boot_type boot
     else
-      if load ''${devtype} ''${devnum}:''${bootpart} ''${kernel_addr_r} /mobile-nixos/recovery/kernel; then
+      if load ''${devtype} ''${devnum}:''${bootpart} ''${kernel_addr_r} /mobile-gaoos/recovery/kernel; then
         setenv boot_type recovery
         setenv bootargs "''${bootargs} is_recovery"
       else
@@ -82,12 +82,12 @@ let
       fi
     fi
 
-    if load ''${devtype} ''${devnum}:''${bootpart} ''${fdt_addr_r} /mobile-nixos/''${boot_type}/dtbs/''${fdtfile}; then
+    if load ''${devtype} ''${devnum}:''${bootpart} ''${fdt_addr_r} /mobile-gaoos/''${boot_type}/dtbs/''${fdtfile}; then
       fdt addr ''${fdt_addr_r}
       fdt resize
     fi
 
-    load ''${devtype} ''${devnum}:''${bootpart} ''${ramdisk_addr_r} /mobile-nixos/''${boot_type}/stage-1
+    load ''${devtype} ''${devnum}:''${bootpart} ''${ramdisk_addr_r} /mobile-gaoos/''${boot_type}/stage-1
     setenv ramdisk_size ''${filesize}
 
     echo bootargs: ''${bootargs}
@@ -128,7 +128,7 @@ in
         disk-image = lib.mkOption {
           type = types.package;
           description = ''
-            Full Mobile NixOS disk image for a u-boot-based system.
+            Full Mobile GaoOS disk image for a u-boot-based system.
           '';
           visible = false;
         };
@@ -165,15 +165,15 @@ in
 
         ext4.partitionID = "ED3902B6-920A-4971-BC07-966D4E021683";
         populateCommands = ''
-          mkdir -vp mobile-nixos/{boot,recovery}
+          mkdir -vp mobile-gaoos/{boot,recovery}
           (
-          cd mobile-nixos/boot
+          cd mobile-gaoos/boot
           cp -v ${stage-0.mobile.outputs.initrd} stage-1
           cp -v ${kernel_file} kernel
           cp -vr ${kernel}/dtbs dtbs
           )
           (
-          cd mobile-nixos/recovery
+          cd mobile-gaoos/recovery
           cp -v ${recovery.mobile.outputs.initrd} stage-1
           cp -v ${kernel_file} kernel
           cp -vr ${kernel}/dtbs dtbs

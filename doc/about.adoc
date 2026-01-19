@@ -1,7 +1,7 @@
-= About Mobile NixOS
+= About Mobile GaoOS
 include::_support/common.inc[]
 
-Mobile NixOS is a superset on top of link:https://nixos.org/nixos/[NixOS Linux]
+Mobile GaoOS is a superset on top of link:https://nixos.org/nixos/[NixOS Linux]
 link:https://nixos.org/nixpkgs/[Nixpkgs] and link:https://nixos.org/nix/[Nix],
 aiming to abstract away the differences between _mobile_ devices.
 

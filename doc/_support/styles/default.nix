@@ -3,7 +3,7 @@
 stdenv.mkDerivation {
   src = ./.;
 
-  pname = "mobile-nixos-website-styles";
+  pname = "mobile-gaoos-website-styles";
   version = "2019-11-06";
 
   buildInputs = with nodePackages; [

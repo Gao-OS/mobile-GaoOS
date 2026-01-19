@@ -11,7 +11,7 @@
 # Note:
 # Verify that .ci/instantiate-all.nix lists the expected paths when adding to this file.
 
-{ mobile-nixos ? builtins.fetchGit ./.
+{ mobile-gaoos ? builtins.fetchGit ./.
 # By default, builds all devices.
 , devices ? null
 
@@ -114,11 +114,11 @@ let
       # lib-like attributes...
       # How should we handle these?
       image-builder = null;
-      mobile-nixos = (onlyDerivationsAndAttrsets overlay.mobile-nixos) // {
+      mobile-gaoos = (onlyDerivationsAndAttrsets overlay.mobile-gaoos) // {
         # The cross canaries attrsets will be used as constituents.
         # Filter out `override` and `overrideAttrs` early.
-        cross-canary-test = onlyDerivations overlay.mobile-nixos.cross-canary-test;
-        cross-canary-test-static = onlyDerivations overlay.mobile-nixos.cross-canary-test-static;
+        cross-canary-test = onlyDerivations overlay.mobile-gaoos.cross-canary-test;
+        cross-canary-test-static = onlyDerivations overlay.mobile-gaoos.cross-canary-test-static;
       };
 
       # Also lib-like, but a "global" like attribute :/
@@ -256,8 +256,8 @@ rec {
         let
           overlay' = overlay.x86_64-linux."${system}-cross";
         in
-        (builtins.attrValues overlay'.mobile-nixos.cross-canary-test)
-        ++ (builtins.attrValues overlay'.mobile-nixos.cross-canary-test-static)
+        (builtins.attrValues overlay'.mobile-gaoos.cross-canary-test)
+        ++ (builtins.attrValues overlay'.mobile-gaoos.cross-canary-test-static)
       ;
       meta = {
         description = "Useful checks for cross-compilation.";
@@ -293,7 +293,7 @@ rec {
         examples.plasma-mobile.x86_64-linux.toplevel
 
         # Flashable zip binaries are universal for a platform.
-        overlay.x86_64-linux.aarch64-linux-cross.mobile-nixos.android-flashable-zip-binaries
+        overlay.x86_64-linux.aarch64-linux-cross.mobile-gaoos.android-flashable-zip-binaries
       ]
       ++ lib.optionals (hasSystem "aarch64-linux") [
         device.motorola-potter.aarch64-linux         # Android
@@ -307,11 +307,11 @@ rec {
         installer.pine64-pinephone
 
         # Flashable zip binaries are universal for a platform.
-        overlay.aarch64-linux.aarch64-linux.mobile-nixos.android-flashable-zip-binaries
+        overlay.aarch64-linux.aarch64-linux.mobile-gaoos.android-flashable-zip-binaries
       ];
   in
   releaseTools.aggregate {
-    name = "mobile-nixos-tested";
+    name = "mobile-gaoos-tested";
     inherit constituents;
     meta = {
       description = "Representative subset of devices that have to succeed.";
@@ -327,7 +327,7 @@ rec {
       ++ lib.optionals (hasSystem "x86_64-linux") [
         # FIXME: add an armv7l system once one is available again
         # device.asus-flo.x86_64-linux
-        overlay.x86_64-linux.armv7l-linux-cross.mobile-nixos.android-flashable-zip-binaries
+        overlay.x86_64-linux.armv7l-linux-cross.mobile-gaoos.android-flashable-zip-binaries
         examples.hello.cross-x86-armv7l.toplevel
       ]
       ++ lib.optionals (hasSystem "aarch64-linux") [
@@ -335,12 +335,12 @@ rec {
       ++ lib.optionals (hasSystem "armv7l-linux") [
         # FIXME: add an armv7l system once one is available again
         # device.asus-flo.armv7l-linux
-        overlay.armv7l-linux.armv7l-linux.mobile-nixos.android-flashable-zip-binaries
+        overlay.armv7l-linux.armv7l-linux.mobile-gaoos.android-flashable-zip-binaries
       ]
       ;
   in
   releaseTools.aggregate {
-    name = "mobile-nixos-tested-plus";
+    name = "mobile-gaoos-tested-plus";
     inherit constituents;
     meta = {
       description = ''

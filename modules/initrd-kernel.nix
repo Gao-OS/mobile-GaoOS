@@ -39,7 +39,7 @@ in
       default = !config.mobile.enable;
       defaultText = literalExpression "!config.mobile.enable";
       description = ''
-        Whether Mobile NixOS relies on upstream NixOS settings for kernel config.
+        Whether Mobile GaoOS relies on upstream NixOS settings for kernel config.
 
         Enable this when using the NixOS machinery for kernels.
       '';
@@ -84,7 +84,7 @@ in
       type = types.nullOr types.package;
       default = null;
       description = ''
-        Kernel to be used by the system-type to boot into the Mobile NixOS
+        Kernel to be used by the system-type to boot into the Mobile GaoOS
         stage-1.
 
         This is not using a kernelPackages attrset, but a kernel derivation directly.
@@ -113,7 +113,7 @@ in
         type = types.package;
         internal = true;
         description = ''
-          Final logo file consumed by the Mobile NixOS kernel-builder infra.
+          Final logo file consumed by the Mobile GaoOS kernel-builder infra.
         '';
       };
       logo = mkOption {
@@ -162,7 +162,7 @@ in
       nixpkgs.overlays = [(_: _: {
         # Used to transmit the option to the kernel builder
         # *sigh*
-        __mobile-nixos-useStrictKernelConfig = cfg.useStrictKernelConfig;
+        __mobile-gaoos-useStrictKernelConfig = cfg.useStrictKernelConfig;
       })];
     }
     # Logo configuration

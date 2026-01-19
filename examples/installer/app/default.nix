@@ -1,4 +1,4 @@
-{ lib, mobile-nixos, fetchurl }:
+{ lib, mobile-gaoos, fetchurl }:
 
 let
   ruby_rev = "37457117c941b700b150d76879318c429599d83f";
@@ -8,7 +8,7 @@ let
     sha256 = "197g7qvrrijmajixa2h9c4jw26l36y8ig6qjb5d43qg4qykhqfcx";
   };
 in
-mobile-nixos.mkLVGUIApp {
+mobile-gaoos.mkLVGUIApp {
   name = "installer-gui.mrb";
   src = lib.cleanSource ./.;
   enableDebugInformation = true;

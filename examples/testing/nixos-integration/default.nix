@@ -14,16 +14,16 @@ let
       ./configuration.nix
     ];
   };
-  # A Mobile NixOS eval that should be a no-op
-  mobile-nixos-eval = eval {
+  # A Mobile GaoOS eval that should be a no-op
+  mobile-gaoos-eval = eval {
     imports = [
       ./configuration.nix
       (import ../../../lib/configuration.nix { })
     ];
     mobile.enable = false;
   };
-  # A Mobile NixOS eval that should be a no-op
-  mobile-nixos-stage-1-eval = eval {
+  # A Mobile GaoOS eval that should be a no-op
+  mobile-gaoos-stage-1-eval = eval {
     imports = [
       ./configuration.nix
       (import ../../../lib/configuration.nix { })
@@ -35,17 +35,17 @@ in
   {
     inherit
       nixos-eval
-      mobile-nixos-eval
-      mobile-nixos-stage-1-eval
+      mobile-gaoos-eval
+      mobile-gaoos-stage-1-eval
     ;
 
     # Use this output to check that the product works as expected.
     # (The bogus rootfs will be overriden by the VM config.)
     default =
-      assert nixos-eval.config.system.build.toplevel == mobile-nixos-eval.config.system.build.toplevel;
-      assert nixos-eval.config.system.build.vm == mobile-nixos-eval.config.system.build.vm;
-      mobile-nixos-eval.config.system.build.vm
+      assert nixos-eval.config.system.build.toplevel == mobile-gaoos-eval.config.system.build.toplevel;
+      assert nixos-eval.config.system.build.vm == mobile-gaoos-eval.config.system.build.vm;
+      mobile-gaoos-eval.config.system.build.vm
     ;
 
-    mobile-nixos-stage-1 = mobile-nixos-stage-1-eval.config.system.build.vm;
+    mobile-gaoos-stage-1 = mobile-gaoos-stage-1-eval.config.system.build.vm;
   }

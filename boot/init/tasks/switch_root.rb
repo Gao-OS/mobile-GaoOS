@@ -68,8 +68,8 @@ class Tasks::SwitchRoot < SingletonTask
           ["init", selected_generation.path("init", readlink: true)].join("="),
           # Flag used to describe we're in a kexec situation.
           # For the time being, the flag is the whole string, not the value yes to that key.
-          "mobile-nixos.kexec=yes",
-          "mobile-nixos.generation=#{selected_generation.path}",
+          "mobile-gaoos.kexec=yes",
+          "mobile-gaoos.generation=#{selected_generation.path}",
           File.read(generation_file("kernel-params")),
         ].join(" ")
       )
@@ -84,7 +84,7 @@ class Tasks::SwitchRoot < SingletonTask
     def maybe_dtb()
       log("Looking for a DTB file...")
 
-      mapping_path = generation_file("mobile-nixos/dtb-mapping.json", missing_allowed: true)
+      mapping_path = generation_file("mobile-gaoos/dtb-mapping.json", missing_allowed: true)
       unless mapping_path && File.exist?(mapping_path)
         log("  DTB: dtb-mapping.json not found... skipping DTB mapping...")
         return nil
@@ -137,10 +137,10 @@ class Tasks::SwitchRoot < SingletonTask
       dts << [
         "\n",
         "// Declare we booted using kexec",
-        %Q{/ { mobile-nixos,stage-0; };},
-        %Q{/ { mobile-nixos,stage-0,timestamp = #{Time.now.to_s.to_json}; };},
-        %Q{/ { mobile-nixos,stage-0,uname = #{`uname -a`.to_json}; };},
-        %Q{/ { mobile-nixos,stage-0,uptime = #{`uptime`.to_json}; };},
+        %Q{/ { mobile-gaoos,stage-0; };},
+        %Q{/ { mobile-gaoos,stage-0,timestamp = #{Time.now.to_s.to_json}; };},
+        %Q{/ { mobile-gaoos,stage-0,uname = #{`uname -a`.to_json}; };},
+        %Q{/ { mobile-gaoos,stage-0,uptime = #{`uptime`.to_json}; };},
       ].join("\n")
 
       FileUtils.mkdir_p("/run/boot/")
@@ -290,7 +290,7 @@ class Tasks::SwitchRoot < SingletonTask
   #
   def default_selection_path()
     # Given as a command-line option, most likely from stage-0.
-    generation_parameter = System.cmdline().grep(/^mobile-nixos.generation=/).first
+    generation_parameter = System.cmdline().grep(/^mobile-gaoos.generation=/).first
     unless generation_parameter.nil?
       $logger.info("Using '#{generation_parameter}' cmdline parameter to select generation...")
       return generation_parameter.split("=", 2).last

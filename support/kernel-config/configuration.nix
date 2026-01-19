@@ -56,7 +56,7 @@ let
   isArm = pkgs.stdenv.isAarch64 || pkgs.stdenv.isAarch32;
   isx86 = isx86_32 || isx86_64;
 
-  evaluatedStructuredConfig = import ../../overlay/mobile-nixos/kernel/eval-config.nix  rec {
+  evaluatedStructuredConfig = import ../../overlay/mobile-gaoos/kernel/eval-config.nix  rec {
     inherit (pkgs) lib path writeShellScript;
     version = "6.6"; # Unimportant, we just want to assert that *any* is enabled.
     structuredConfig = (pkgs.systemBuild-structuredConfig version);

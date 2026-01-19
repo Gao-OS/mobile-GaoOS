@@ -1,22 +1,22 @@
 = Boot Process
 include::_support/common.inc[]
 
-“How does Mobile NixOS boot?”
+“How does Mobile GaoOS boot?”
 
 This is what this documentation topic tries to describe. This is for end-users.
 
 For developers, see in-depth topics.
 
 
-== Booting Mobile NixOS
+== Booting Mobile GaoOS
 
-Most devices targeted by Mobile NixOS are intended to boot only one kernel at
+Most devices targeted by Mobile GaoOS are intended to boot only one kernel at
 a time, with one stage-1, and one system.
 
 NixOS, in turn, shines when a system can choose a _generation_, which has its
 own kernel, stage-1, and system build.
 
-Mobile NixOS, at this point in time, sits on the halfway point. The user cannot
+Mobile GaoOS, at this point in time, sits on the halfway point. The user cannot
 choose which generation a kernel and stage-1 comes from, but can boot a
 specific generation.
 

@@ -5,7 +5,7 @@
   # stage-2 is really happening.
   config.boot.postBootCommands = ''
     # Reset the VT console.
-    # The Mobile NixOS stage-1 can be rude.
+    # The Mobile GaoOS stage-1 can be rude.
     for d in /sys/class/vtconsole/vtcon*; do
       if ${pkgs.busybox}/bin/grep 'frame buffer' "$d/name"; then
         echo 1 > "$d/bind"

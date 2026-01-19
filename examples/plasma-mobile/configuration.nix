@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    ./mobile-nixos-branding.nix
+    ./mobile-gaoos-branding.nix
     ./plasma-mobile.nix
     ../common-configuration.nix
   ];

@@ -13,7 +13,7 @@ let
 in
 {
   mobile.kernel.structuredConfig = [
-    # Mobile NixOS *defaults*
+    # Mobile GaoOS *defaults*
     (helpers: with helpers; mkDefaultIze {
       # Partitions
       PARTITION_ADVANCED = no;

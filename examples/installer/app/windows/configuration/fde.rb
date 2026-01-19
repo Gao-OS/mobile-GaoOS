@@ -13,7 +13,7 @@ module GUI
     def setup_window()
       @title.set_text("Full Disk Encryption")
       add_text(%Q{
-        Your Mobile NixOS system can be configured with Full Disk Encryption.
+        Your Mobile GaoOS system can be configured with Full Disk Encryption.
 
         It will require entering a passphrase during boot.
 

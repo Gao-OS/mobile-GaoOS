@@ -46,7 +46,7 @@ SUPPORT_LEVEL_ORDER = [
 ]
 
 def githubURL(device)
-  "https://github.com/mobile-nixos/mobile-nixos/tree/development/devices/#{device}"
+  "https://github.com/Gao-OS/Mobile-GaoOS/tree/development/devices/#{device}"
 end
 
 def yesno(bool)
@@ -113,15 +113,15 @@ File.open(File.join($out, "devices/index.adoc"), "w") do |file|
   :sitemap_index: true
   :generated: true
 
-  The following table lists all devices Mobile NixOS available out of the
+  The following table lists all devices Mobile GaoOS available out of the
   box on the development branch.
 
   Different devices have varying degree of support.
 
   #{devices_sections($devicesInfo)}
 
-  Remember to look at the link:https://github.com/mobile-nixos/mobile-nixos/pulls?q=is%3Aopen+is%3Apr+label%3A%22type%3A+port%22[port label]
-  on the Mobile NixOS pull requests tracker, for upcoming devices.
+  Remember to look at the link:https://github.com/Gao-OS/Mobile-GaoOS/pulls?q=is%3Aopen+is%3Apr+label%3A%22type%3A+port%22[port label]
+  on the Mobile GaoOS pull requests tracker, for upcoming devices.
 
   EOF
 end
@@ -149,7 +149,7 @@ $devicesInfo.values.each do |info|
     SoC:: #{info["hardware"]["soc"]}
     Architecture:: #{info["system"]["system"]}
     Supports Stage-0:: #{yesno(info["quirks"]["supportsStage-0"])}
-    Source:: link:#{githubURL(identifier)}[Mobile NixOS repository]
+    Source:: link:#{githubURL(identifier)}[Mobile GaoOS repository]
 
     ****
 

@@ -13,7 +13,7 @@ def as_nix(value)
   end
 end
 
-# Filter non-mobile-nixos options.
+# Filter non-mobile-gaoos options.
 options = JSON.parse(File.read(ENV["optionsJSON"]))
   .select do |k, v|
     v["declarations"].any? {|path| path.match(/^#{$root}/)}
@@ -28,11 +28,11 @@ end
 # Write the options listing.
 File.open(File.join($out, "options/index.adoc"), "w") do |file|
   file.puts <<~EOF
-    = Mobile NixOS Options
+    = Mobile GaoOS Options
     include::_support/common.inc[]
     :generated: true
 
-    The following list only includes the options defined by Mobile NixOS.
+    The following list only includes the options defined by Mobile GaoOS.
 
     Refer to the link:https://search.nixos.org/options[NixOS options listing]
     for the NixOS options.
@@ -43,7 +43,7 @@ File.open(File.join($out, "options/index.adoc"), "w") do |file|
 
   # "mobile.quirks.u-boot.initialGapSize"=>
   #{"declarations"=>
-  #  [".../mobile-nixos/modules/system-types/u-boot"],
+  #  [".../mobile-gaoos/modules/system-types/u-boot"],
   # "default"=>true, 
   # "description"=>
   #  "Size (in bytes) to keep reserved in front of the first partition.\n",

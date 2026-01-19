@@ -7,7 +7,7 @@ let
   inherit (config.mobile) device;
   inherit (config.mobile.outputs.generatedFilesystems) rootfs;
   inherit (config.mobile.outputs.android) android-bootimg;
-  inherit (pkgs.mobile-nixos) make-flashable-zip;
+  inherit (pkgs.mobile-gaoos) make-flashable-zip;
 
   # Fragments that will be re-used in the flashable zip builds
 

@@ -16,7 +16,7 @@ in
           type = types.bool;
           default = config.mobile.enable;
           description = ''
-            Whether some of the rootfs configuration is managed by Mobile NixOS or not.
+            Whether some of the rootfs configuration is managed by Mobile GaoOS or not.
           '';
         };
         rehydrateStore = mkOption {

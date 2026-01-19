@@ -16,8 +16,8 @@ in
     echo ":: Adding pre-built boot files to closure..."
     (
       PS4=" $ "; set -x
-      mkdir -p $out/mobile-nixos-installer
-      cd $out/mobile-nixos-installer
+      mkdir -p $out/mobile-gaoos-installer
+      cd $out/mobile-gaoos-installer
       ${
         concatMapStringsSep "\n" ({ name ? path.name, path }: ''
           ln -s ${path} ${name}

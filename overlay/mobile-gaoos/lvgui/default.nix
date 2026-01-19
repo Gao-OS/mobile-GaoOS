@@ -1,13 +1,13 @@
 { runCommand
 , lib
 , mruby
-, mobile-nixos
+, mobile-gaoos
 }:
 
 /**
  * Builds an LVGUI application.
  *
- * Tailor-made for Mobile NixOS; external uses not guaranteed.
+ * Tailor-made for Mobile GaoOS; external uses not guaranteed.
  */
 { name
 , src
@@ -16,7 +16,7 @@
 , rubyFiles ? []
 
 /** Derivation with all the assets to include */
-, assets ? mobile-nixos.gui-assets
+, assets ? mobile-gaoos.gui-assets
 /** Path local to $out/share/ the assets are located at */
 , assetsPath ? "lvgui/assets"
 /** Path, local to $out, the executable will be written to */
@@ -33,7 +33,7 @@ let
     "lvgui/args.rb"
     "lvgui/lvgl/*.rb"
     "lvgui/lvgui/*.rb"
-    "lvgui/mobile_nixos/*.rb"
+    "lvgui/mobile_gaoos/*.rb"
     "lvgui/vtconsole.rb"
     "xdg.rb"
   ]);
@@ -69,7 +69,7 @@ let
     ln -s ${assets} $out/"share/${assetsPath}"
   '';
 
-  script-loader = mobile-nixos.script-loader.override({
+  script-loader = mobile-gaoos.script-loader.override({
     withSimulator = true;
   });
 

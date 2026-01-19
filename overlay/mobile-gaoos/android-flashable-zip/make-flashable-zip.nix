@@ -1,7 +1,7 @@
-{ runCommand, writeText, zip, mobile-nixos }:
+{ runCommand, writeText, zip, mobile-gaoos }:
 
 let
-  inherit (mobile-nixos) android-flashable-zip-binaries;
+  inherit (mobile-gaoos) android-flashable-zip-binaries;
 in
 
 { script, copyFiles, name }:

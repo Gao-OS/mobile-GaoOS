@@ -35,7 +35,7 @@ module GUI
 
       add_text("Hostname")
       @hostname_input = add_textarea()
-      @hostname_input.set_text("mobile-nixos")
+      @hostname_input.set_text("mobile-gaoos")
 
       [
         @hostname_input,

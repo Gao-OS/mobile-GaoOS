@@ -9,7 +9,7 @@ module GUI
 
       LVGL::LVLabel.new(@container).tap do |label|
 text = <<EOF
-Mobile NixOS "Hello GUI"
+Mobile GaoOS "Hello GUI"
 
 This application is intended to provide a minimum viable known working framebuffer application to test different components of your mobile device.
 

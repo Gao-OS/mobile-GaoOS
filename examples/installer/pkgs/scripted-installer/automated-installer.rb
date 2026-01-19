@@ -43,7 +43,7 @@ def step_marker(text)
 end
 
 puts "================================================"
-puts "= Mobile NixOS installer — automated installer ="
+puts "= Mobile GaoOS installer — automated installer ="
 puts "================================================"
 
 GENERATED_DIR = File.join(ENV["XDG_RUNTIME_DIR"], "mobile-installer")
@@ -104,10 +104,10 @@ end
 # Override work that would be done by <nixpkgs/nixos/modules/services/misc/nix-daemon.nix>
 # See also `nix.nixPath` option, which uses `nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos`
 # We only support `nixos-unstable`.
-# We don't publish "known good" channel releases yet for Mobile NixOS.
+# We don't publish "known good" channel releases yet for Mobile GaoOS.
 channels = [
   ["https://nixos.org/channels/nixos-unstable", "nixos"],
-  ["https://github.com/mobile-nixos/mobile-nixos/archive/refs/heads/development.tar.gz", "mobile-nixos"],
+  ["https://github.com/Gao-OS/Mobile-GaoOS/archive/refs/heads/development.tar.gz", "mobile-gaoos"],
 ].map{|pair| pair.join(" ") }.join("\n")
 File.write(File.join(MOUNT_POINT, "/root/.nix-channels"), channels)
 
@@ -115,7 +115,7 @@ File.write(File.join(MOUNT_POINT, "/root/.nix-channels"), channels)
 channels = <<EOF
 [
   { name = "nixos"; path = #{Nix.ensure_in_store(Nix.instantiate(expr: "<nixpkgs>", json: false))}; }
-  { name = "mobile-nixos"; path = #{Nix.ensure_in_store(Nix.instantiate(expr: "<mobile-nixos>", json: false))}; }
+  { name = "mobile-gaoos"; path = #{Nix.ensure_in_store(Nix.instantiate(expr: "<mobile-gaoos>", json: false))}; }
 ]
 EOF
 channels_path = Nix.build(expr: CHANNELS_BUILDER, args: {channels: channels})

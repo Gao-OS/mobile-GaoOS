@@ -58,7 +58,7 @@ index 7a6e06c..1ab60c8 100644
 -    }
 -}
 +/**
-+ * Mobile NixOS hack:
++ * Mobile GaoOS hack:
 + * This property "provider" relies on the older "legacy" behaviour. This is used
 + * to avoid loading libraries in the stage-1 environment. This is possible since
 + * adbd doesn't care much about using the actual libraries from the device, but

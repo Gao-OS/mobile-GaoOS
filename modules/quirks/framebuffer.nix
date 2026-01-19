@@ -28,7 +28,7 @@ in
       description = ''
         Add `msm-fb-refresher` to stage-1.
 
-        It should not be needed for the usual assortment of Mobile NixOS tools.
+        It should not be needed for the usual assortment of Mobile GaoOS tools.
         They already handle flipping the framebuffer as needed.
       '';
     };

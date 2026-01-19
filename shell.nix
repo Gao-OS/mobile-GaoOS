@@ -9,10 +9,10 @@ in
 
 # A basic shell with some tools available for porting devices.
 pkgs.mkShell {
-  name = "nixos-mobile";
+  name = "gaoos-mobile";
   buildInputs = with pkgs; [
     # Custom tools
-    mobile-nixos.autoport     # Helps users kickstart their ports
+    mobile-gaoos.autoport     # Helps users kickstart their ports
 
     # Third party tools
     android-tools             # For flashing android devices with fastboot

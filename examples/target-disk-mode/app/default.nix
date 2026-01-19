@@ -1,6 +1,6 @@
-{ lib, mobile-nixos }:
+{ lib, mobile-gaoos }:
 
-mobile-nixos.mkLVGUIApp {
+mobile-gaoos.mkLVGUIApp {
   name = "tdm-gui.mrb";
   src = lib.cleanSource ./.;
   rubyFiles = [

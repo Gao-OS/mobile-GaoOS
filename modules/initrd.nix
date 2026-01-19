@@ -50,7 +50,7 @@ let
 
   stage-1 = config.mobile.boot.stage-1;
 
-  mobile-nixos-init = pkgs.callPackage ../boot/init {
+  mobile-gaoos-init = pkgs.callPackage ../boot/init {
     inherit (config.mobile.boot.stage-1) tasks;
   };
 
@@ -59,7 +59,7 @@ let
 
     echo
     echo "***************************************"
-    echo "* Mobile NixOS stage-${toString config.mobile.boot.stage-1.stage} script wrapper *"
+    echo "* Mobile GaoOS stage-${toString config.mobile.boot.stage-1.stage} script wrapper *"
     echo "***************************************"
     echo
 
@@ -93,7 +93,7 @@ let
       # Init components
       { object = "${extraUtils}/bin/loader"; symlink = "/loader"; }
       { object = initWrapper; symlink = "/init"; }
-      { object = "${mobile-nixos-init}/libexec/init.mrb"; symlink = "/init.mrb"; }
+      { object = "${mobile-gaoos-init}/libexec/init.mrb"; symlink = "/init.mrb"; }
     ]
   ;
 
@@ -163,7 +163,7 @@ let
   };
 
   initrd = makeInitrd {
-    name = "mobile-nixos-initrd-${device_name}";
+    name = "mobile-gaoos-initrd-${device_name}";
     inherit contents;
 
     compressor =  {
@@ -204,7 +204,7 @@ in
         type = types.bool;
         default = config.mobile.enable;
         description = ''
-          Whether to use the Mobile NixOS stage-1 implementation or not.
+          Whether to use the Mobile GaoOS stage-1 implementation or not.
 
           This will forcible override the NixOS stage-1 when enabled.
         '';
@@ -336,8 +336,8 @@ in
         initrd = "${initrd}/initrd";
       };
 
-      # This is not a Mobile NixOS output; this is to "dis"-integrate with the
-      # default NixOS outputs. Do not refer to this in Mobile NixOS.
+      # This is not a Mobile GaoOS output; this is to "dis"-integrate with the
+      # default NixOS outputs. Do not refer to this in Mobile GaoOS.
       system.build.initialRamdisk =
         if config.mobile.rootfs.shared.enabled
         then pkgs.runCommand "nullInitialRamdisk" {} "touch $out"
@@ -369,7 +369,7 @@ in
             ;
           }]
         ++ [
-          { package = pkgs.mobile-nixos.stage-1.script-loader; }
+          { package = pkgs.mobile-gaoos.stage-1.script-loader; }
         ]
         ++ optionals withStrace [
           {

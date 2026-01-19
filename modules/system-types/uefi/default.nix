@@ -106,7 +106,7 @@ in
         disk-image = lib.mkOption {
           type = types.package;
           description = ''
-            Full Mobile NixOS disk image for a UEFI-based system.
+            Full Mobile GaoOS disk image for a UEFI-based system.
           '';
           visible = false;
         };

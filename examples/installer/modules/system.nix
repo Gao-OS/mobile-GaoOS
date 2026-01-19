@@ -14,7 +14,7 @@
   # It's not needed.
   mobile.quirks.supportsStage-0 = lib.mkForce false;
 
-  mobile.configurationName = "mobile-nixos_${config.mobile.device.name}_installer";
+  mobile.configurationName = "mobile-gaoos_${config.mobile.device.name}_installer";
 
   # Force a lower brightness.
   # At some point the UI should allow configuring this.

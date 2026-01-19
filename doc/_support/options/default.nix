@@ -33,7 +33,7 @@ let
   optionsJSON = (nixosOptionsDoc { options = dummyEval.options; }).optionsJSON;
 in
 
-runCommand "mobile-nixos-docs-options" {
+runCommand "mobile-gaoos-docs-options" {
   nativeBuildInputs = [
     ruby
     glibcLocales

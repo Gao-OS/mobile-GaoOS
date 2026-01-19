@@ -11,7 +11,7 @@ class Tasks::Splash < SingletonTask
       args << "--verbose"
     end
 
-    if System.cmdline().grep("mobile-nixos.kexec=yes").any?
+    if System.cmdline().grep("mobile-gaoos.kexec=yes").any?
       args << "--skip-fadein"
     end
 

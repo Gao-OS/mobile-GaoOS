@@ -83,45 +83,45 @@ in
 
     # No such fixes as of now, this comment is merely a placeholder to keep the general structure.
 
-    # Things specific to mobile-nixos.
+    # Things specific to mobile-gaoos.
     # Not necessarily internals, but they probably won't go into <nixpkgs>.
-    mobile-nixos = {
-      kernel-builder = callPackage ./mobile-nixos/kernel/builder.nix {};
-      kernel-builder-clang = callPackage ./mobile-nixos/kernel/builder.nix {
+    mobile-gaoos = {
+      kernel-builder = callPackage ./mobile-gaoos/kernel/builder.nix {};
+      kernel-builder-clang = callPackage ./mobile-gaoos/kernel/builder.nix {
         stdenv = with final; overrideCC stdenv buildPackages.clang;
       };
 
       # We need to "globally" locally override some packages for stage-1.
-      stage-1 = (final.appendOverlays [(import ../boot/overlay)]).mobile-nixos.stage-1;
+      stage-1 = (final.appendOverlays [(import ../boot/overlay)]).mobile-gaoos.stage-1;
 
       # Originally part of `stage-1`.
       # In stage-1 it is now overridden with the cut-down libinput and libxkbcommon.
       script-loader = callPackage ../boot/script-loader {};
 
       # Flashable zip binaries are always static.
-      android-flashable-zip-binaries = final.pkgsStatic.callPackage ./mobile-nixos/android-flashable-zip-binaries {};
+      android-flashable-zip-binaries = final.pkgsStatic.callPackage ./mobile-gaoos/android-flashable-zip-binaries {};
 
-      autoport = callPackage ./mobile-nixos/autoport {};
+      autoport = callPackage ./mobile-gaoos/autoport {};
 
-      boot-control = callPackage ./mobile-nixos/boot-control {};
+      boot-control = callPackage ./mobile-gaoos/boot-control {};
 
-      boot-recovery-menu-simulator = final.mobile-nixos.stage-1.boot-recovery-menu.simulator;
-      boot-splash-simulator = final.mobile-nixos.stage-1.boot-splash.simulator;
+      boot-recovery-menu-simulator = final.mobile-gaoos.stage-1.boot-recovery-menu.simulator;
+      boot-splash-simulator = final.mobile-gaoos.stage-1.boot-splash.simulator;
 
-      fdt-forward = callPackage ./mobile-nixos/fdt-forward {};
+      fdt-forward = callPackage ./mobile-gaoos/fdt-forward {};
 
-      gui-assets = callPackage ./mobile-nixos/gui-assets {};
+      gui-assets = callPackage ./mobile-gaoos/gui-assets {};
 
-      make-flashable-zip = callPackage ./mobile-nixos/android-flashable-zip/make-flashable-zip.nix {};
+      make-flashable-zip = callPackage ./mobile-gaoos/android-flashable-zip/make-flashable-zip.nix {};
 
-      map-dtbs = callPackage ./mobile-nixos/map-dtbs {};
+      map-dtbs = callPackage ./mobile-gaoos/map-dtbs {};
 
-      mkLVGUIApp = callPackage ./mobile-nixos/lvgui {};
+      mkLVGUIApp = callPackage ./mobile-gaoos/lvgui {};
 
-      cross-canary-test = callPackage ./mobile-nixos/cross-canary/test.nix {};
-      cross-canary-test-static = final.pkgsStatic.callPackage ./mobile-nixos/cross-canary/test.nix {};
+      cross-canary-test = callPackage ./mobile-gaoos/cross-canary/test.nix {};
+      cross-canary-test-static = final.pkgsStatic.callPackage ./mobile-gaoos/cross-canary/test.nix {};
 
-      pine64-alsa-ucm = callPackage ./mobile-nixos/pine64-alsa-ucm {};
+      pine64-alsa-ucm = callPackage ./mobile-gaoos/pine64-alsa-ucm {};
     };
 
     image-builder = callPackage ./image-builder {};

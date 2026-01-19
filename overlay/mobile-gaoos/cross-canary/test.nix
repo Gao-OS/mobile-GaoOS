@@ -1,4 +1,4 @@
-{ stdenv, lib, runCommand, runtimeShell, busybox, hello, hello-mruby, pkgsBuildBuild, mruby, mrbgems, mobile-nixos }:
+{ stdenv, lib, runCommand, runtimeShell, busybox, hello, hello-mruby, pkgsBuildBuild, mruby, mrbgems, mobile-gaoos }:
 
 let
   static = stdenv.hostPlatform.isStatic;
@@ -56,10 +56,10 @@ if stdenv.buildPlatform == stdenv.hostPlatform then {} else (
 
   # This is more of an integrated test. It ends up exercising the systemd build.
   # But this is still a _canary_ for us as it is at the root of our dependencies.
-  mobile-nixos-script-loader = mkTest "mobile-nixos-script-loader" ''
+  mobile-gaoos-script-loader = mkTest "mobile-gaoos-script-loader" ''
     echo 'puts ARGV.inspect' > test.rb
-    ${emulator} ${mobile-nixos.stage-1.script-loader}/bin/loader
-    ${emulator} ${mobile-nixos.stage-1.script-loader}/bin/loader ./test.rb okay
+    ${emulator} ${mobile-gaoos.stage-1.script-loader}/bin/loader
+    ${emulator} ${mobile-gaoos.stage-1.script-loader}/bin/loader ./test.rb okay
   '';
 }) //
 # Builds expected to work in both normal and static package sets.

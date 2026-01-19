@@ -1,11 +1,11 @@
 {
-  mobile-nixos
+  mobile-gaoos
 , fetchFromGitea
 , fetchpatch
 , ...
 }:
 
-mobile-nixos.kernel-builder {
+mobile-gaoos.kernel-builder {
   version = "6.15.6";
   configfile = ./config.aarch64;
   src = fetchFromGitea {
@@ -18,7 +18,7 @@ mobile-nixos.kernel-builder {
   patches = [
     ./0001-dts-pinephone-Setup-default-on-and-panic-LEDs.patch
     (fetchpatch {
-      url = "https://github.com/mobile-nixos/linux/commit/372597b5449b7e21ad59dba0842091f4f1ed34b2.patch";
+      url = "https://github.com/mobile-gaoos/linux/commit/372597b5449b7e21ad59dba0842091f4f1ed34b2.patch";
       sha256 = "1lca3fdmx2wglplp47z2d1030bgcidaf1fhbnfvkfwk3fj3grixc";
     })
     # Drop modem-power from DT to allow eg25-manager to have full control.

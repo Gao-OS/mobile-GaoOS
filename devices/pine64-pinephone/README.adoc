@@ -8,14 +8,14 @@ include::_support/common.inc[]
 It is recommended to install link:https://tow-boot.org/[Tow-Boot] to
 dedicated storage (mmcboot).
 
-Mainline U-Boot should work, but Mobile NixOS is tested with Tow-Boot.
+Mainline U-Boot should work, but Mobile GaoOS is tested with Tow-Boot.
 
 === Installer
 
 The installer can be downloaded and flashed to an SD card.
 
 ```
- $ dd if=mobile-nixos_pine64-pinephone_installer.img of=/dev/mmcblkX bs=8M oflag=sync,direct status=progress
+ $ dd if=mobile-gaoos_pine64-pinephone_installer.img of=/dev/mmcblkX bs=8M oflag=sync,direct status=progress
 ```
 
 When using Tow-Boot, hold _volume down_ during boot to boot from the SD card.
@@ -91,12 +91,12 @@ NixOS boot partition.
 
 ```
  $ nix-build --argstr device pine64-pinephone -A build.boot-partition
- $ dd if=result/mobile-nixos-boot.img of=/dev/mmcblkXpY bs=8M oflag=sync,direct status=progress
+ $ dd if=result/mobile-gaoos-boot.img of=/dev/mmcblkXpY bs=8M oflag=sync,direct status=progress
 ```
 
 === Building U-Boot
 
-Mobile NixOS is not managing platform firmware builds anymore.
+Mobile GaoOS is not managing platform firmware builds anymore.
 
 We recommend installing link:https://tow-boot.org/[Tow-Boot] to dedicated storage
 (mmcboot).

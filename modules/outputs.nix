@@ -11,7 +11,7 @@ in
       outputs = {
         default = mkOption {
           description = ''
-            Default most likely desired output for this Mobile NixOS build.
+            Default most likely desired output for this Mobile GaoOS build.
 
             The default depends on the system type in use.
           '';

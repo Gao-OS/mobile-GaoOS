@@ -163,7 +163,7 @@ EOF
 end
 
 puts "==========================================="
-puts "= Mobile NixOS installer — disk formatter ="
+puts "= Mobile GaoOS installer — disk formatter ="
 puts "==========================================="
 puts
 

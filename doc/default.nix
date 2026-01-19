@@ -5,13 +5,13 @@ let pkgs' = pkgs; in # Break the cycle
 let
   pkgs = pkgs'.appendOverlays [
     (final: super: {
-      mobile-nixos-process-doc = final.callPackage ./_support/converter {};
+      mobile-gaoos-process-doc = final.callPackage ./_support/converter {};
     })
   ];
 in
 
 let
-  inherit (pkgs) stdenv mobile-nixos-process-doc rsync;
+  inherit (pkgs) stdenv mobile-gaoos-process-doc rsync;
 
   # Styles, built from a preprocessor.
   styles = pkgs.callPackage ./_support/styles { };
@@ -24,11 +24,11 @@ let
 in
 
 stdenv.mkDerivation {
-  name = "mobile-nixos-docs";
+  name = "mobile-gaoos-docs";
   src = ./.;
 
   buildInputs = [
-    mobile-nixos-process-doc
+    mobile-gaoos-process-doc
     rsync
   ];
 
@@ -40,7 +40,7 @@ stdenv.mkDerivation {
 
     # Replace it in-place with the repo README.
     cat >> index.adoc <<EOF
-    = Mobile NixOS
+    = Mobile GaoOS
     include::_support/common.inc[]
 
     EOF

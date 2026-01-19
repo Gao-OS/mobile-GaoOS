@@ -7,8 +7,8 @@ and creating a filesytem for the boot image.
 [NOTE]
 ===
 These instructions depend on adb being enabled, so
-will not work with an "unconfigured" Mobile NixOS image.  If you have
-changed nothing else in your Mobile NixOS system then you will at
+will not work with an "unconfigured" Mobile GaoOS image.  If you have
+changed nothing else in your Mobile GaoOS system then you will at
 minimum need something like
 `{ lib, ... }: { mobile.adbd.enable = true; }` in the `local.nix` file.
 
@@ -59,7 +59,7 @@ keys. Usually, waiting until the screen turns on and/or the device
 vibrates should be enough to make the stock bootloader ignore the
 keys.
 
-The suggested filesystem arrangement is to put the Mobile NixOS
+The suggested filesystem arrangement is to put the Mobile GaoOS
 `system.img` into the `userdata` partition, and use the `system`
 partition for the stage-1 `boot.img` which on some devices is too
 large for the `boot` partition. Once running lk2nd you can do this

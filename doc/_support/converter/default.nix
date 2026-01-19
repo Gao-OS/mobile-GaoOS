@@ -3,7 +3,7 @@
 let
   env =
     bundlerEnv {
-    name = "mobile-nixos-process-doc";
+    name = "mobile-gaoos-process-doc";
     gemdir = ./.;
 
     exes = [
@@ -12,7 +12,7 @@ let
 
     meta = with lib; {
       description = "Custom documentation building pipeline built on asciidoctor";
-      license = licenses.mit; # Same as mobile-nixos
+      license = licenses.mit; # Same as mobile-gaoos
       maintainers = with maintainers; [ samueldr ];
       platforms = platforms.unix;
     };

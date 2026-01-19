@@ -85,7 +85,7 @@ in
       }
     ];
     mobile.boot.defaultConsole = mkOptionDefault (
-      # We add the default default console only when the whole of Mobile NixOS is enabled.
+      # We add the default default console only when the whole of Mobile GaoOS is enabled.
       if config.mobile.enable then "tty1" else null
     );
     mobile.boot.additionalConsoles = mkIf (cfg.serialConsole != null) [

@@ -3,7 +3,7 @@
 {
   nix.nixPath = [
     "nixpkgs=${lib.cleanSource pkgs.path}"
-    # Mobile NixOS root
-    "mobile-nixos=${lib.cleanSource ../../..}"
+    # Mobile GaoOS root
+    "mobile-gaoos=${lib.cleanSource ../../..}"
   ];
 }

@@ -180,7 +180,7 @@ let
       ./0001-HACK-Ensures-a-host-less-build-can-be-made.patch
       ./0001-Nixpkgs-dump-linker-flags-for-re-use.patch
     ]
-    ++ optional stripStorePathHashes ./0001-mobile-nixos-Strip-store-path-hashes-when-saving-deb.patch
+    ++ optional stripStorePathHashes ./0001-mobile-gaoos-Strip-store-path-hashes-when-saving-deb.patch
     ;
 
     postPatch = ''

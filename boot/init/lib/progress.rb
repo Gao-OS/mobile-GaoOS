@@ -1,6 +1,6 @@
 # Progress-reporting plumbing
 module Progress
-  SOCKET_PREFIX = "/run/mobile-nixos-init"
+  SOCKET_PREFIX = "/run/mobile-gaoos-init"
 
   # Starts the queue sockets.
   # This is waiting for /run/ to be available.

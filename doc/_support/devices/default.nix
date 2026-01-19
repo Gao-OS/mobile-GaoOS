@@ -18,7 +18,7 @@ let
   };
 in
 
-runCommand "mobile-nixos-docs-devices" {
+runCommand "mobile-gaoos-docs-devices" {
   nativeBuildInputs = [
     ruby
     glibcLocales

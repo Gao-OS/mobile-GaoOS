@@ -65,7 +65,7 @@
 
   # Alsa UCM profiles
   mobile.quirks.audio.alsa-ucm-meld = true;
-  environment.systemPackages = [ pkgs.mobile-nixos.pine64-alsa-ucm ];
+  environment.systemPackages = [ pkgs.mobile-gaoos.pine64-alsa-ucm ];
 
   mobile.boot.stage-1.tasks = [ ./usb_role_switch_task.rb ];
 

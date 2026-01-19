@@ -4,7 +4,7 @@ Installer
 What's this?
 ------------
 
-This is a system that is used to *imperatively* install Mobile NixOS to a
+This is a system that is used to *imperatively* install Mobile GaoOS to a
 target system.
 
 At the current time, its use is limited to systems where the partition scheme

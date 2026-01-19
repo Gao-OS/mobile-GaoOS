@@ -1,6 +1,6 @@
-{ lib, mobile-nixos }:
+{ lib, mobile-gaoos }:
 
-mobile-nixos.mkLVGUIApp {
+mobile-gaoos.mkLVGUIApp {
   name = "boot-recovery-menu.mrb";
   executablePath = "libexec/boot-recovery-menu.mrb";
   src = lib.cleanSource ./.;

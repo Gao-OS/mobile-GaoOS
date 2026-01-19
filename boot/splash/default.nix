@@ -1,4 +1,4 @@
-{ lib, runCommand, mobile-nixos }:
+{ lib, runCommand, mobile-gaoos }:
 
 let
   assets = runCommand "boot-splash-assets" {} ''
@@ -6,7 +6,7 @@ let
     ln -s /etc/logo.svg $out/logo.svg
   '';
 in
-mobile-nixos.mkLVGUIApp {
+mobile-gaoos.mkLVGUIApp {
   name = "boot-splash.mrb";
   executablePath = "libexec/boot-splash.mrb";
   enableDebugInformation = true;

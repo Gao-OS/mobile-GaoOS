@@ -31,11 +31,11 @@ NixOS boot partition.
 
 ```
  $ nix-build --argstr device pine64-pinetab -A build.boot-partition
- $ dd if=result/mobile-nixos-boot.img of=/dev/mmcblkXp3 bs=8M oflag=sync,direct status=progress
+ $ dd if=result/mobile-gaoos-boot.img of=/dev/mmcblkXp3 bs=8M oflag=sync,direct status=progress
 ```
 
 === Building U-Boot
 
-Mobile NixOS is not managing platform firmware builds anymore.
+Mobile GaoOS is not managing platform firmware builds anymore.
 
 PineTab support in Tow-Boot [is planned](https://github.com/Tow-Boot/Tow-Boot/issues/144).

@@ -242,7 +242,7 @@ module System
     end
     $logger.fatal("")
     $logger.fatal("********************************************")
-    $logger.fatal("* Fatal error in Mobile NixOS stage-1 init *")
+    $logger.fatal("* Fatal error in Mobile GaoOS stage-1 init *")
     $logger.fatal("********************************************")
     $logger.fatal("")
     $logger.fatal("#{code}: #{title}")

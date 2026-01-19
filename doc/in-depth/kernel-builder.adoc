@@ -1,12 +1,12 @@
 = Notes about the kernel builder
 include::_support/common.inc[]
 
-The “Kernel builder” is a set of attributes available on the `mobile-nixos`
+The “Kernel builder” is a set of attributes available on the `mobile-gaoos`
 attribute overlaid on top of Nixpkgs.
 
 ```
-mobile-nixos.kernel-builder
-mobile-nixos.kernel-builder-clang
+mobile-gaoos.kernel-builder
+mobile-gaoos.kernel-builder-clang
 ```
 
 The kernel builder additionally provides configuration options to work with
@@ -77,7 +77,7 @@ the `drivers/video/logo/logo_linux_clut224.ppm` file in the kernel source tree.
 
 This effectively replaces the Tux logo.
 
-By default an appropriate file is provided by Mobile NixOS.
+By default an appropriate file is provided by Mobile GaoOS.
 
 === `enableCompilerGcc6Quirk`
 

@@ -27,7 +27,7 @@ let
   ];
 in
 stdenv.mkDerivation {
-  pname = "mobile-nixos-init";
+  pname = "mobile-gaoos-init";
   version = "0.1.0";
 
   src = ./.;

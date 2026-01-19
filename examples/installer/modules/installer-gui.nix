@@ -4,7 +4,7 @@ let
   inherit (lib.strings) makeBinPath;
 
   app = pkgs.callPackage ../app {};
-  installer-gui = pkgs.mobile-nixos.script-loader.wrap {
+  installer-gui = pkgs.mobile-gaoos.script-loader.wrap {
     name = "installer-gui";
     applet = "${app}/libexec/app.mrb";
     env = {
@@ -42,7 +42,7 @@ in
       builtins.throw "Building the installer for '${config.mobile.system.type}' system types is not supported and may be dangerous."
     else
       {
-        description = "GUI for the installer for Mobile NixOS";
+        description = "GUI for the installer for Mobile GaoOS";
         wantedBy = [ "multi-user.target" ];
 
         # Let's make sure our networking interfaces are up...

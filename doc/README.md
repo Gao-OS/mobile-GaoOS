@@ -8,7 +8,7 @@ This document is not to be generated into the website/documentation.
 Implementation notes
 --------------------
 
-This documentation folder generates the Mobile NixOS website *and* documentation
+This documentation folder generates the Mobile GaoOS website *and* documentation
 as a whole.
 
 The documentation is to be written in asciidoc, and converted through a custom
@@ -22,8 +22,8 @@ Main Page and News
 ------------------
 
 To reduce the amount of irrelevant contents in the documentation folders, the
-main page, and news entries from the Mobile NixOS website have been split into
-the Mobile NixOS website repository.
+main page, and news entries from the Mobile GaoOS website have been split into
+the Mobile GaoOS website repository.
 
 This also allows more leeway to add additional non-documentation relevant pages
 to the website. The documentation folder of the main repository is used solely

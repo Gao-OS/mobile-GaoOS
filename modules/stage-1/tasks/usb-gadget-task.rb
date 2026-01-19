@@ -320,7 +320,7 @@ class Tasks::SetupGadgetMode < SingletonTask
     gadget.id_product = Configuration["usb"]["idProduct"]
     gadget.product = Configuration["device"]["name"]
     # FIXME : could this cause issues?
-    gadget.manufacturer = "Mobile NixOS"
+    gadget.manufacturer = "Mobile GaoOS"
     gadget.serial_number = "0123456789"
     gadget.features = Configuration["boot"]["usb"]["features"]
     gadget.activate!

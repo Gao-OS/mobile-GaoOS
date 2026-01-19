@@ -16,7 +16,7 @@ The files can be acquired through different methods. You can use an
 alternate recovery like TWRP, mount the partition (identified using
 `blkid`) and copy the files.
 
-Another way is to do it using an installed Mobile NixOS system, where,
+Another way is to do it using an installed Mobile GaoOS system, where,
 too, you mount the partition and copy them:
 
 ```

@@ -1,5 +1,5 @@
 #
-# This configuration serves to force Mobile NixOS branding in the
+# This configuration serves to force Mobile GaoOS branding in the
 # Plasma Mobile environment at first boot.
 #
 # This is **not** an example for end-user-centric configuration.
@@ -48,7 +48,7 @@ let
     cp ${../../artwork/wallpapers}/*.png $out/
   '';
 
-  wallpaper="${wallpapers}/mobile-nixos-19.09.png";
+  wallpaper="${wallpapers}/mobile-gaoos-19.09.png";
 
   # Used to run an ugly activation script.
   defaultUserName = "alice";
@@ -62,7 +62,7 @@ in
   system.activationScripts.userInitialConfiguration = let
     homeDir = config.users.users.${defaultUserName}.home;
   in ''
-    echo ":: Mobile NixOS initial configuration..."
+    echo ":: Mobile GaoOS initial configuration..."
     if [ ! -e ${homeDir}/.config ]; then
       echo "Assuming first boot!"
       echo "Creating home dir"

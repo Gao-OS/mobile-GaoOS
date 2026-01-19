@@ -24,7 +24,7 @@ in
 
     src = fetchFromGitHub {
       repo = "lvgui";
-      owner = "mobile-nixos";
+      owner = "mobile-gaoos";
       rev = "4d1c176c2cfdf11a1e9624ae702c1dafd694c33c";
       hash = "sha256-6gHTdu8TMn7JQ7dSdCPi2/VXeq+p8iHnmojm+cHbew8=";
     };
@@ -59,6 +59,6 @@ in
 
     enableParallelBuilding = true;
 
-    # https://github.com/mobile-nixos/lvgui/issues/23
+    # https://github.com/mobile-gaoos/lvgui/issues/23
     env.NIX_CFLAGS_COMPILE = "-Wno-error";
   }

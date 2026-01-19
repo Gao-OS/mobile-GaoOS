@@ -4,7 +4,7 @@ let
   inherit (lib.strings) makeBinPath;
 
   app = pkgs.callPackage ./app {};
-  hello-gui = pkgs.mobile-nixos.script-loader.wrap {
+  hello-gui = pkgs.mobile-gaoos.script-loader.wrap {
     name = "hello-gui";
     applet = "${app}/libexec/app.mrb";
     env = {
@@ -79,7 +79,7 @@ in
     enable = false;
   };
   systemd.services.hello-gui = {
-    description = "GUI for the hello example of Mobile NixOS";
+    description = "GUI for the hello example of Mobile GaoOS";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Restart = "always";

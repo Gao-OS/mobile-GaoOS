@@ -19,7 +19,7 @@ lib.mkIf isCross (lib.mkMerge [
 
   # Some Network Manager plugins are kinda problematic...
   # Let's ignore them for now.
-  # Cross-compilation of Mobile NixOS for the time being is not fully-featured.
+  # Cross-compilation of Mobile GaoOS for the time being is not fully-featured.
   # If those plugins are needed, do a native build.
   networking.networkmanager.plugins = lib.mkForce [];
 }

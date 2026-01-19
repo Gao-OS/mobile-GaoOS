@@ -12,7 +12,7 @@ let
     mkdir -p $out/bin
     # /bin/sh is busybox in the initrd, assuredly.
     echo "#!/bin/sh" > $out/bin/fdt-forward
-    cat "${pkgs.mobile-nixos.fdt-forward}/bin/fdt-forward" >> $out/bin/fdt-forward
+    cat "${pkgs.mobile-gaoos.fdt-forward}/bin/fdt-forward" >> $out/bin/fdt-forward
     chmod +x $out/bin/fdt-forward
 
     cp ${pkgs.ubootTools}/bin/fdtgrep $out/bin/

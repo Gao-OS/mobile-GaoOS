@@ -4,7 +4,7 @@
 ## Building
 
 ```
- $ cd .../mobile-nixos
+ $ cd .../mobile-gaoos
  $ nix-build examples/hello --argstr device DEVICE-NAME -A outputs.default
 ```
 
