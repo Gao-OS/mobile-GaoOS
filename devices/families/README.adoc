@@ -1,3 +1,0 @@
-= Device families
-
-_See the documentation in <<../../doc/in-depth/devices.adoc#,Notes about devices>>._

@@ -9,7 +9,7 @@ in
       systemTypeFargment = mkOption {
         type = types.path;
         description = "Used to choose the generic documentation fragment for the system.";
-        default = ./system-types + "/${config.mobile.system.type}/device-notes.adoc.erb";
+        default = ./system-types + "/${config.mobile.system.type}/device-notes.md.erb";
         internal = true;
       };
       hydraOutputs = mkOption {

@@ -1,0 +1,7 @@
+## Building
+
+This will build the default output for your *<%= info["fullName"] %>*.
+
+```
+$ nix-build --argstr device <%= info["identifier"] %> -A outputs.default
+```

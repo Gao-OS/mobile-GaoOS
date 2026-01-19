@@ -1,7 +1,7 @@
 require "erb"
 require "json"
 
-NOTES_HEADER = "== Device-specific notes"
+NOTES_HEADER = "## Device-specific notes"
 
 COLUMNS = [
   { key: "identifier",   name: "Identifier" },
@@ -164,7 +164,7 @@ $devicesInfo.values.each do |info|
     # Otherwise a trailing command could end-up being merged.
     file.puts("\n\n")
     
-    deviceNotesFile = File.join($devicesDir, identifier, "README.adoc")
+    deviceNotesFile = File.join($devicesDir, identifier, "README.md")
     if File.exist?(deviceNotesFile)
       notes = File.read(deviceNotesFile).split("\n\n", 2).last.strip
       first_line = notes.lines.first.strip

@@ -219,7 +219,7 @@ in
         "Android.bootloader"
       ];
 
-      mobile.documentation.systemTypeFargment = ./. + "/device-notes.${flashingMethod}.adoc.erb";
+      mobile.documentation.systemTypeFargment = ./. + "/device-notes.${flashingMethod}.md.erb";
 
       assertions = [
         {

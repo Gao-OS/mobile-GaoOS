@@ -39,23 +39,14 @@ stdenv.mkDerivation {
     rm -f README.md
 
     # Replace it in-place with the repo README.
-    cat >> index.adoc <<EOF
-    = Mobile GaoOS
-    include::_support/common.inc[]
+    cat >> index.md <<EOF
+# Mobile GaoOS
 
-    EOF
-    tail -n +4 ${../README.adoc} >> index.adoc
+EOF
+    tail -n +2 ${../README.md} >> index.md
 
-    # The title needs to be first
-    head -n1 ${../CONTRIBUTING.adoc} > contributing.adoc
-
-    # Then we're adding our common stuff
-    cat >> contributing.adoc <<EOF
-    include::_support/common.inc[]
-    EOF
-
-    # Then continuing with the file.
-    tail -n +2 ${../CONTRIBUTING.adoc} >> contributing.adoc
+    # Copy CONTRIBUTING.md
+    cp ${../CONTRIBUTING.md} contributing.md
 
     # Copies the generated asciidoc source for the devices.
     cp -prf ${devices}/devices devices
