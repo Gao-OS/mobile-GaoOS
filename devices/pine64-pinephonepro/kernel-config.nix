@@ -21,13 +21,13 @@
       BT_HCIUART = yes;
       BT_HCIUART_BCM = yes;
 
-      # Wifi
+      # Wifi (Broadcom brcmfmac for AP6255)
       WLAN = yes;
       WLAN_VENDOR_BROADCOM = yes;
       BRCMUTIL = yes;
       BRCMFMAC = yes;
       BRCMFMAC_SDIO = yes;
-      BRCMSMAC = yes;
+      # Note: BRCMSMAC removed - legacy 802.11n driver not needed for PPP
       BRCM_TRACING = yes;
       BRCMDBG = yes;
       MAC80211 = yes;
