@@ -1,8 +1,9 @@
 { lib, ... }:
 
 {
-  users.users.nixos = {
+  users.users.gao = {
     isNormalUser = true;
+    password = "2580";
     extraGroups = [
       "input"
       "networkmanager"
@@ -18,5 +19,5 @@
 
   # Some systems allows the use of TTYs, e.g. the pinephone does.
   # Let's not make it needlessly annoying to use for them.
-  services.getty.autologinUser = "nixos";
+  services.getty.autologinUser = "gao";
 }

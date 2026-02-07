@@ -5,7 +5,7 @@
 
 let
   # One-stop shop to customize the default username before building.
-  defaultUserName = "alice";
+  defaultUserName = "gao";
 in
 {
   imports = [
@@ -24,7 +24,7 @@ in
       users.users.${defaultUserName} = {
         isNormalUser = true;
         # Numeric pin makes it **possible** to input on the lockscreen.
-        password = "1234";
+        password = "2580";
         home = "/home/${defaultUserName}";
         extraGroups = [
           "dialout"
@@ -51,6 +51,14 @@ in
 
       # Setup USB gadget networking in initrd...
       mobile.boot.stage-1.networking.enable = lib.mkDefault true;
+    }
+
+    # Sudo
+    {
+      security.sudo = {
+        enable = true;
+        wheelNeedsPassword = lib.mkForce false;
+      };
     }
 
     # SSH

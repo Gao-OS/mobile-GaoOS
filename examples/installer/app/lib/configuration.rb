@@ -260,6 +260,11 @@ users.users.#{username.to_json} = {
     "wheel"
   ];
 };
+
+security.sudo = {
+  enable = true;
+  wheelNeedsPassword = false;
+};
 EOF
   end
 

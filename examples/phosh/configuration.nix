@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  defaultUserName = "alice";
+  defaultUserName = "gao";
 in
 {
   imports = [
@@ -12,7 +12,7 @@ in
   config = {
     users.users."${defaultUserName}" = {
       isNormalUser = true;
-      password = "1234";
+      password = "2580";
       extraGroups = [
         "dialout"
         "feedbackd"
@@ -20,6 +20,11 @@ in
         "video"
         "wheel"
       ];
+    };
+
+    security.sudo = {
+      enable = true;
+      wheelNeedsPassword = lib.mkForce false;
     };
     
     services.xserver.desktopManager.phosh = {

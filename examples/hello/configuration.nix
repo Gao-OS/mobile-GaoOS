@@ -105,8 +105,9 @@ in
     fi
   '';
 
-  users.users.nixos = {
+  users.users.gao = {
     isNormalUser = true;
+    password = "2580";
     extraGroups = [ "wheel" "networkmanager" "video" ];
   };
 
@@ -115,7 +116,7 @@ in
     wheelNeedsPassword = lib.mkForce false;
   };
 
-  services.getty.autologinUser = "nixos";
+  services.getty.autologinUser = "gao";
 
   # The LVGUI interface can be used with volume keys for selecting
   # and power to activate an option.

@@ -51,7 +51,7 @@ let
   wallpaper="${wallpapers}/mobile-gaoos-19.09.png";
 
   # Used to run an ugly activation script.
-  defaultUserName = "alice";
+  defaultUserName = "gao";
 in
 {
   environment.systemPackages = [
