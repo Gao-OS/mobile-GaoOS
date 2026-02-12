@@ -32,6 +32,16 @@ jobs:
   #        nix_path: nixpkgs=channel:nixos-unstable
   #    - name: "Instantiation"
   #      run: bin/hydra-eval
+  Flake_Check:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: "actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f"
+      - uses: "cachix/install-nix-action@07da2520eebede906fbeefa9dd0a2b635323909d"
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - name: "Flake check"
+        run: nix flake check --no-build
   Kernel_configuration_up-to-date:
     runs-on: [ubuntu-latest]
     steps:
