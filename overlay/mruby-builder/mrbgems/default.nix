@@ -105,7 +105,7 @@ rec {
   mruby-fiddle = mkGem {
     src = fetchFromGitHub {
       repo = "mruby-fiddle";
-      owner = "mobile-gaoos";
+      owner = "mobile-nixos";
       rev = "f4ee03fcf9022d21e68de6d3b6e58e14b9c6cf43";
       sha256 = "1w2mzmdgkk9qvn0cz0i09xs14mjcvryjxicl2n09l2bjk0plqdm4";
     };
@@ -267,7 +267,7 @@ rec {
   mruby-process-clock_gettime = mkGem {
     src = fetchFromGitHub {
       repo = "mruby-process-clock_gettime";
-      owner = "mobile-gaoos";
+      owner = "mobile-nixos";
       rev = "23d7f64178876d1074d7ff5b4b1d2adb8a277d6c";
       sha256 = "052q3963lblw6465i1bjbfna88cyk8v1mmznqi4x5a6wddpiwwbj";
     };

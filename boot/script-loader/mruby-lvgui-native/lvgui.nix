@@ -24,7 +24,7 @@ in
 
     src = fetchFromGitHub {
       repo = "lvgui";
-      owner = "mobile-gaoos";
+      owner = "mobile-nixos";
       rev = "4d1c176c2cfdf11a1e9624ae702c1dafd694c33c";
       hash = "sha256-6gHTdu8TMn7JQ7dSdCPi2/VXeq+p8iHnmojm+cHbew8=";
     };

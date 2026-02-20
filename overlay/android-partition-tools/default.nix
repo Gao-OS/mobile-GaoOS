@@ -9,7 +9,7 @@ stdenv.mkDerivation {
   version = "2024-12-20";
 
   src = fetchFromGitHub {
-    owner = "mobile-gaoos";
+    owner = "mobile-nixos";
     repo = "android-partition_tools";
     rev = "a8c564dd4d05886850faf55ecf41e302d110ac2f";
     sha256 = "sha256-k5IG+lio1cP7rBLpMAwudSQQQqtudDJpgTVaQIl5Eug=";

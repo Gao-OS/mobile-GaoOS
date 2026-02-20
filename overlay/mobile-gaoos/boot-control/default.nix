@@ -9,7 +9,7 @@ stdenv.mkDerivation {
   version = "2022-10-18";
 
   src = fetchFromGitHub {
-    owner = "mobile-gaoos";
+    owner = "mobile-nixos";
     repo = "boot-control";
     rev = "c106707d923f2242b2375597913a42b2af08350f";
     sha256 = "sha256-iI3ad/K+lEspKYacnRu92mHsLqG4Geu6Zto5fav0SC4=";
