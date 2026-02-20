@@ -37,8 +37,19 @@
       ];
 
       # --- NixOS Modules (for external flake consumers) ---
-      nixosModules.default = {
-        imports = import ./modules/module-list.nix;
+      nixosModules = let
+        # Discover device directories the same way release-tools.nix does
+        deviceNames = builtins.filter
+          (d: builtins.pathExists (./devices + "/${d}/default.nix"))
+          (builtins.attrNames (builtins.readDir ./devices));
+        perDevice = builtins.listToAttrs (map (name: {
+          inherit name;
+          value = { imports = [ ./devices/${name} ]; };
+        }) deviceNames);
+      in perDevice // {
+        default = {
+          imports = import ./modules/module-list.nix;
+        };
       };
 
       # --- Dev Shells ---

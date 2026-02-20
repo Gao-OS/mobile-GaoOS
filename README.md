@@ -74,7 +74,7 @@ Add Mobile GaoOS to your own flake to build a custom phone configuration:
       system = "aarch64-linux";
       modules = [
         mobile-gaoos.nixosModules.default
-        (mobile-gaoos + "/devices/pine64-pinephonepro")
+        mobile-gaoos.nixosModules.pine64-pinephonepro
         ./configuration.nix
       ];
     };
@@ -125,6 +125,7 @@ nix build .#nixosConfigurations.myphone.config.mobile.outputs.default
 |---|---|
 | `overlays.default` | Nixpkgs overlay with mobile-specific packages |
 | `nixosModules.default` | NixOS module set for mobile features |
+| `nixosModules.<device>` | Per-device hardware configuration (e.g., `nixosModules.pine64-pinephonepro`) |
 | `devShells.*.default` | Development shell with porting tools |
 | `packages.*.autoport` | Device porting helper |
 | `packages.*.docs` | Project documentation |
@@ -186,7 +187,7 @@ No extra configuration needed. The build system detects architecture differences
 2. Set hardware specs (`mobile.hardware.soc`, `mobile.hardware.ram`, `mobile.hardware.screen`)
 3. Configure the kernel package (`mobile.boot.stage-1.kernel.package`)
 4. Set the system type (`mobile.system.type`: `android`, `u-boot`, or `uefi`)
-5. Add the device to `flake.nix` `nixosConfigurations`
+5. Device modules are auto-discovered from `devices/` — no manual `flake.nix` edits needed for `nixosModules`
 
 Use `nix develop` and the `autoport` tool for assistance. Refer to existing devices as templates.
 

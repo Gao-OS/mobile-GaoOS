@@ -44,7 +44,7 @@ nix build .#docs        # Project documentation
       system = "aarch64-linux";
       modules = [
         mobile-gaoos.nixosModules.default
-        (mobile-gaoos + "/devices/pine64-pinephonepro")
+        mobile-gaoos.nixosModules.pine64-pinephonepro
         ./configuration.nix
       ];
     };
