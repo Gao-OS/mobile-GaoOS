@@ -105,23 +105,22 @@ let
       overlayAttrNames = builtins.attrNames (import ./overlay/overlay.nix {} {});
     in
     eval: let overlay = (lib.genAttrs overlayAttrNames (name: eval.pkgs.${name})); in
-    overlay // {
+    builtins.removeAttrs (overlay // {
       # We only "monkey patch" over top of the main nixos one.
       xf86videofbdev = eval.pkgs.xf86videofbdev;
 
-      # lib-like attributes...
-      # How should we handle these?
-      image-builder = null;
       mobile-gaoos = (onlyDerivationsAndAttrsets overlay.mobile-gaoos) // {
         # The cross canaries attrsets will be used as constituents.
         # Filter out `override` and `overrideAttrs` early.
         cross-canary-test = onlyDerivations overlay.mobile-gaoos.cross-canary-test;
         cross-canary-test-static = onlyDerivations overlay.mobile-gaoos.cross-canary-test-static;
       };
-
-      # Also lib-like, but a "global" like attribute :/
-      defaultKernelPatches = null;
-    }
+    }) [
+      # These are lib-like attributes, not derivations.
+      # Remove them entirely (null breaks nix flake check).
+      "image-builder"
+      "defaultKernelPatches"
+    ]
   ;
 
   # Given a system builds run on, this will return a set of further systems
