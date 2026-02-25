@@ -10,19 +10,26 @@ let
   ;
   cfg = config.mobile.boot.stage-1.gui;
   inherit (config.boot.initrd) luks;
+
+  # Compatibility: the xorg package set was dissolved into top-level in nixpkgs 25.11+.
+  # Older nixpkgs still has pkgs.xorg.*, newer throws on pkgs.xorg access.
+  xorgAvailable = (builtins.tryEval pkgs.xorg).success;
+  libX11 = if xorgAvailable then pkgs.xorg.libX11 else pkgs.libX11;
+  xkeyboard_config = if xorgAvailable then pkgs.xorg.xkeyboardconfig else pkgs.xkeyboard_config;
+
   minimalX11Config = pkgs.runCommand "minimalX11Config" {
     allowedReferences = [ "out" ];
   } ''
     (PS4=" $ "; set -x
     mkdir -vp "$out/xkb"
-    cp -vr -t "$out/xkb/" ${pkgs.xkeyboard_config}/share/X11/xkb/*
-    cp -vr ${pkgs.libX11.out}/share/X11/locale $out/locale
+    cp -vr -t "$out/xkb/" ${xkeyboard_config}/share/X11/xkb/*
+    cp -vr ${libX11.out}/share/X11/locale $out/locale
     )
 
-    for f in $(grep -lIiR '${pkgs.libX11.out}' $out); do
+    for f in $(grep -lIiR '${libX11.out}' $out); do
       printf ':: substituting original path for $out in "%s".\n' "$f"
       substituteInPlace $f \
-        --replace "${pkgs.libX11.out}/share/X11/locale/en_US.UTF-8/Compose" "$out/locale/en_US.UTF-8/Compose"
+        --replace "${libX11.out}/share/X11/locale/en_US.UTF-8/Compose" "$out/locale/en_US.UTF-8/Compose"
     done
   '';
 in
