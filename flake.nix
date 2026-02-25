@@ -95,10 +95,8 @@
           mkSystem { device = "pine64-pinephonepro"; exampleConfig = import ./examples/installer/configuration.nix; };
       };
 
-      # --- Hydra Jobs (reuse existing release.nix directly) ---
-      hydraJobs = import ./release.nix {
-        pkgs = pkgsFor "x86_64-linux";
-        systems = supportedSystems;
-      };
+      # Note: Hydra jobs are available via `release.nix` directly (not through the flake).
+      # The release.nix evaluation model (platform filtering, cross-compilation matrix)
+      # is incompatible with `nix flake check`'s strict validation.
     };
 }
