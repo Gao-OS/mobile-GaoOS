@@ -26,7 +26,6 @@ rec {
       ++ (import "${toString pkgs.path}/nixos/modules/module-list.nix")
     )
   }: evalConfig {
-    inherit (pkgs) system;
     inherit baseModules;
     modules =
       (if device ? special
@@ -35,6 +34,14 @@ rec {
       else [ { imports = [(../. + "/devices/${device}")]; } ])
       ++ modules
       ++ [ additionalConfiguration ]
+      ++ [
+        # Set the build platform from the evaluating pkgs set.
+        # This enables automatic cross-compilation when hostPlatform
+        # (set by system-target.nix) differs from this buildPlatform.
+        ({ lib, ... }: {
+          nixpkgs.buildPlatform = lib.mkDefault (lib.systems.elaborate pkgs.system);
+        })
+      ]
     ;
   };
 
@@ -57,7 +64,7 @@ rec {
                 aarch64-linux = "generic-aarch64";
                 armv7l-linux = "generic-armv7l";
               }.${buildingForSystem};
-              nixpkgs.localSystem = knownSystems.${system};
+              nixpkgs.buildPlatform = knownSystems.${system};
             }
           ];
         };

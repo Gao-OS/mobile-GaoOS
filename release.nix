@@ -148,7 +148,7 @@ let
   device = lib.genAttrs devices (device:
     lib.genAttrs systems (system:
       (evalWithConfiguration {
-        nixpkgs.localSystem = knownSystems.${system};
+        nixpkgs.buildPlatform = knownSystems.${system};
       } device).config.mobile.outputs.default
     )
   );
@@ -158,7 +158,7 @@ let
   kernel = lib.genAttrs devices (device:
     lib.genAttrs systems (system:
       (evalWithConfiguration {
-        nixpkgs.localSystem = knownSystems.${system};
+        nixpkgs.buildPlatform = knownSystems.${system};
       } device).config.mobile.boot.stage-1.kernel.package
     )
   );
@@ -197,7 +197,7 @@ let
         imports = [
           ./examples/installer/configuration.nix
         ];
-        nixpkgs.localSystem = knownSystems.${localSystem};
+        nixpkgs.buildPlatform = knownSystems.${localSystem};
       } device;
     in
       eval // { inherit (eval.config.mobile) outputs; }

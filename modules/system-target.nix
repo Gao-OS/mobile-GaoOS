@@ -3,51 +3,19 @@
 let
   inherit (lib)
     mkDefault
-    mkIf
     mkOption
     types
   ;
   inherit (lib.systems)
     elaborate
   ;
-  inherit (config)
-    nixpkgs
-  ;
-  inherit (config.nixpkgs)
-    hostPlatform
-    localSystem
-  ;
   cfg = config.mobile.system;
-
-  # Use JSON to escape values for printing
-  e = builtins.toJSON;
 
   # The host platform selected by the Mobile device configuration
   deviceHostPlatform = elaborate cfg.system;
 
-  # The `config.nixpkgs` attribute set value defaults are not supposed to be read.
-  # Let's try anyway, and assume a pure evaluation with i.e. `[flake]lib.nixosSystem` is in play when that fails.
-  # This should be safe, as this is only used to automatically compute cross-compilation in “impure” environments.
-  hasLocalSystem =
-    (builtins.tryEval (
-      config.nixpkgs.localSystem
-    )).success
-  ;
-
-  # When `nixpkgs` is built on a different platform than it will be running on.
-  isCross = hasLocalSystem && deviceHostPlatform.system != localSystem.system;
-
-  # Be mindful about using `config` values that depends on `nixpkgs.buildPlatform`!
-  # This is used when setting `nixpkgs.buildPlatform`, so any values depending on `nixpkgs.buildPlatform`,
-  # including `nixpkgs.buildPlatform` will cause an infinite recursion.
-  traceCrossBuildPlatform =
-    buildPlatform:
-    builtins.trace ''
-      Building for cross?: ${e deviceHostPlatform.system} != ${e localSystem.system} → ${if isCross then "we are" else "we're not"}.
-                nixpkgs.buildPlatform.config → ${e /*nixpkgs.*/buildPlatform.config}
-                nixpkgs.hostPlatform.config → ${e nixpkgs.hostPlatform.config}
-    '' buildPlatform
-  ;
+  # Use JSON to escape values for printing
+  e = builtins.toJSON;
 in
 {
   options.mobile = {
@@ -80,13 +48,6 @@ in
 
     nixpkgs.hostPlatform =
       mkDefault deviceHostPlatform
-    ;
-    nixpkgs.buildPlatform =
-      mkIf isCross (
-        # We are only using `traceCrossBuildPlatform` when doing cross-compilation.
-        # Otherwise it's noise for native builds.
-        mkDefault (traceCrossBuildPlatform (elaborate localSystem.system))
-      )
     ;
   };
 }

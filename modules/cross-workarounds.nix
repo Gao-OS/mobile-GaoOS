@@ -5,9 +5,7 @@
 # That is `nix-build ./default.nix`, without additional configuration.
 let
   isCross =
-    config.nixpkgs.crossSystem != null &&
-    config.nixpkgs.localSystem.system != null &&
-    config.nixpkgs.crossSystem.system != config.nixpkgs.localSystem.system;
+    pkgs.stdenv.buildPlatform.system != pkgs.stdenv.hostPlatform.system;
   nullPackage = pkgs.runCommand "null" {} ''
     mkdir -p $out
   '';
@@ -25,7 +23,7 @@ lib.mkIf isCross (lib.mkMerge [
 }
 
 # 32 bit ARM
-(lib.mkIf config.nixpkgs.crossSystem.isAarch32 {
+(lib.mkIf pkgs.stdenv.hostPlatform.isAarch32 {
   nixpkgs.overlays = [
     (final: super:
       # Ensure pkgsBuildBuild ends up unmodified, otherwise the canary test will
