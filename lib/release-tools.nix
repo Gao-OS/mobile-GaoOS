@@ -26,6 +26,10 @@ rec {
       ++ (import "${toString pkgs.path}/nixos/modules/module-list.nix")
     )
   }: evalConfig {
+    # Pass null to avoid legacy nixpkgs.system option (incompatible
+    # with the modern hostPlatform/buildPlatform API used in system-target.nix).
+    # In pure flake eval, builtins.currentSystem is unavailable anyway.
+    system = null;
     inherit baseModules;
     modules =
       (if device ? special

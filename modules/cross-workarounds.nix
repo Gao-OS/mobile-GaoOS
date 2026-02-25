@@ -3,9 +3,13 @@
 # This module adds system-level workarounds when cross-compiling.
 # These workarounds are only expected to be implemented for the *basic* build.
 # That is `nix-build ./default.nix`, without additional configuration.
+#
+# NOTE: We use config.nixpkgs.{build,host}Platform instead of pkgs.stdenv
+# to avoid infinite recursion (this module sets nixpkgs.overlays, and pkgs
+# depends on nixpkgs.overlays).
 let
   isCross =
-    pkgs.stdenv.buildPlatform.system != pkgs.stdenv.hostPlatform.system;
+    config.nixpkgs.buildPlatform.system != config.nixpkgs.hostPlatform.system;
   nullPackage = pkgs.runCommand "null" {} ''
     mkdir -p $out
   '';
@@ -23,7 +27,7 @@ lib.mkIf isCross (lib.mkMerge [
 }
 
 # 32 bit ARM
-(lib.mkIf pkgs.stdenv.hostPlatform.isAarch32 {
+(lib.mkIf config.nixpkgs.hostPlatform.isAarch32 {
   nixpkgs.overlays = [
     (final: super:
       # Ensure pkgsBuildBuild ends up unmodified, otherwise the canary test will
