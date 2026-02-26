@@ -81,19 +81,18 @@
           mkSystem { device = "oneplus-enchilada"; exampleConfig = import ./examples/hello/configuration.nix; };
         oneplus-enchilada-phosh =
           mkSystem { device = "oneplus-enchilada"; exampleConfig = import ./examples/phosh/configuration.nix; };
-        oneplus-enchilada-plasma-mobile =
-          mkSystem { device = "oneplus-enchilada"; exampleConfig = import ./examples/plasma-mobile/configuration.nix; };
 
         # PinePhone Pro
         pine64-pinephonepro-hello =
           mkSystem { device = "pine64-pinephonepro"; exampleConfig = import ./examples/hello/configuration.nix; };
         pine64-pinephonepro-phosh =
           mkSystem { device = "pine64-pinephonepro"; exampleConfig = import ./examples/phosh/configuration.nix; };
-        pine64-pinephonepro-plasma-mobile =
-          mkSystem { device = "pine64-pinephonepro"; exampleConfig = import ./examples/plasma-mobile/configuration.nix; };
         pine64-pinephonepro-installer =
           mkSystem { device = "pine64-pinephonepro"; exampleConfig = import ./examples/installer/configuration.nix; };
       };
+      # Note: plasma-mobile configs are excluded — the example uses Plasma 5
+      # (plasma5.mobile.enable) which is not available in the flake's nixpkgs.
+      # Use the legacy npins path or update examples/plasma-mobile/ for Plasma 6.
 
       # Note: Hydra jobs are available via `release.nix` directly (not through the flake).
       # The release.nix evaluation model (platform filtering, cross-compilation matrix)

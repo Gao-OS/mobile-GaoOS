@@ -18,8 +18,8 @@ nix build .#nixosConfigurations.<device>-<example>.config.mobile.outputs.default
 
 ### Available Configurations
 
-- `oneplus-enchilada-{hello,phosh,plasma-mobile}`
-- `pine64-pinephonepro-{hello,phosh,plasma-mobile,installer}`
+- `oneplus-enchilada-{hello,phosh}`
+- `pine64-pinephonepro-{hello,phosh,installer}`
 
 ### Development Shell
 
