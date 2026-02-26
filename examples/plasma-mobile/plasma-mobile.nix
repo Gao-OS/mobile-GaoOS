@@ -29,7 +29,7 @@
   services.pipewire.enable = lib.mkDefault true;
   services.pulseaudio.enable = lib.mkDefault false;
   networking.networkmanager.enable = true;
-  networking.wireless.enable = false;
+  networking.wireless.enable = lib.mkForce false;
   powerManagement.enable = true;
   services.libinput.enable = true;
   services.displayManager.defaultSession = "plasma-mobile";
