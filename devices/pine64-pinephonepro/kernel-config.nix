@@ -47,6 +47,14 @@
 
       # Vibrate motor
       INPUT_GPIO_VIBRA = yes;
+
+      # Kernel 6.17 overrides: oldconfig forces these to =m due to
+      # parent dependency chains, conflicting with NixOS common-config
+      IP_NF_RAW = lib.mkForce module;
+      IP6_NF_RAW = lib.mkForce module;
+
+      # FB_SIMPLE was removed in kernel 6.15 (replaced by DRM_SIMPLEDRM)
+      FB_SIMPLE = lib.mkForce no;
     })
   ];
 }
