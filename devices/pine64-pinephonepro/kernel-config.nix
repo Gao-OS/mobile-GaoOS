@@ -28,7 +28,7 @@
       BRCMFMAC = yes;
       BRCMFMAC_SDIO = yes;
       # Note: BRCMSMAC removed - legacy 802.11n driver not needed for PPP
-      BRCM_TRACING = yes;
+      # Note: BRCM_TRACING requires FTRACE which is intentionally disabled
       BRCMDBG = yes;
       MAC80211 = yes;
 
