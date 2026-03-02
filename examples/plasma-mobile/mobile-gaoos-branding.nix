@@ -26,7 +26,7 @@ let
   # `--group` being [like][these].
   userSetupScript = pkgs.writeScript "userInitialConfiguration" ''
     #!${pkgs.runtimeShell}
-    ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 \
+    ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
       --file kscreenlockerrc \
       --group Greeter \
       --group Wallpaper \

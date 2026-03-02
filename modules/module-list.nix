@@ -45,6 +45,7 @@
   ./mobile-device.nix
   ./nixpkgs.nix
   ./outputs.nix
+  ./plasma-mobile.nix
   ./plymouth.nix
   ./quirks
   ./recovery.nix
