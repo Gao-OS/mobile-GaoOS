@@ -37,8 +37,6 @@ in
       plasma-dialer
       plasma-keyboard
       spacebar
-      maliit-framework
-      maliit-keyboard
     ] ++ lib.optionals cfg.installRecommendedSoftware (with pkgs.kdePackages; [
       alligator
       angelfish
