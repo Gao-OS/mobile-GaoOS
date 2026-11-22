@@ -18,7 +18,7 @@ let
     inherit cmdline;
     inherit (config.mobile.outputs) initrd;
     name = "mobile-gaoos_${device.name}_${bootimg.name}";
-    kernel = "${kernelPackage}/${kernelPackage.file}";
+    kernel = "${kernelPackage}/${if kernelPackage ? file then kernelPackage.file else kernelPackage.target}";
     inherit (config.mobile.system.android) appendDTB;
   };
 
@@ -57,7 +57,7 @@ let
     ''
     else if flashingMethod == "odin" then ''
       heimdall flash \
-        --BOOT "$dir"/boot.img ${optionalString has_recovery_partition ''\
+        --BOOT "$dir"/boot.img ${optionalString has_recovery_partition ''
         --RECOVERY "$dir"/recovery.img
       ''}
     ''
@@ -220,6 +220,8 @@ in
       ];
 
       mobile.documentation.systemTypeFargment = ./. + "/device-notes.${flashingMethod}.md.erb";
+
+      hardware.deviceTree.enable = false;
 
       assertions = [
         {

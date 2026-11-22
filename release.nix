@@ -46,7 +46,12 @@ let
       if args' ? system
       then builtins.throw "Providing the `system` argument when providing your own `pkgs` is forbidden. You should instead pass the desired `system` argument to your `pkgs` instance."
       else (args'.pkgs)
-    else (import ./pkgs.nix { inherit system; })
+    else (import ./pkgs.nix {
+      inherit system;
+      config = {
+        allowAliases = false;
+      };
+    })
   ;
 
   mobileReleaseTools = (import ./lib/release-tools.nix { inherit pkgs; });
@@ -71,9 +76,24 @@ let
   inherit (pkgs) lib releaseTools;
   inherit (mobileReleaseTools.withPkgs pkgs)
     evalFor
-    evalWithConfiguration
-    knownSystems
     specialConfig
+  ;
+
+  # Add `allowAliases = false` to `evalWithConfiguration` for the release evaluations.
+  evalWithConfiguration =
+    config: device:
+    (mobileReleaseTools.withPkgs pkgs).evalWithConfiguration
+    {
+      imports = [
+        {
+          nixpkgs.config = {
+            allowAliases = false;
+          };
+        }
+        config
+      ];
+    }
+    device
   ;
 
   # Systems we should eval for, per host system.
@@ -106,8 +126,7 @@ let
     in
     eval: let overlay = (lib.genAttrs overlayAttrNames (name: eval.pkgs.${name})); in
     builtins.removeAttrs (overlay // {
-      # We only "monkey patch" over top of the main nixos one.
-      xf86videofbdev = eval.pkgs.xf86videofbdev;
+      xf86-video-fbdev = eval.pkgs.xf86-video-fbdev;
 
       mobile-gaoos = (onlyDerivationsAndAttrsets overlay.mobile-gaoos) // {
         # The cross canaries attrsets will be used as constituents.
@@ -147,7 +166,7 @@ let
   device = lib.genAttrs devices (device:
     lib.genAttrs systems (system:
       (evalWithConfiguration {
-        nixpkgs.buildPlatform = knownSystems.${system};
+        nixpkgs.buildPlatform = system;
       } device).config.mobile.outputs.default
     )
   );
@@ -157,7 +176,7 @@ let
   kernel = lib.genAttrs devices (device:
     lib.genAttrs systems (system:
       (evalWithConfiguration {
-        nixpkgs.buildPlatform = knownSystems.${system};
+        nixpkgs.buildPlatform = system;
       } device).config.mobile.boot.stage-1.kernel.package
     )
   );
@@ -189,14 +208,14 @@ let
 
   evalInstaller =
     { device
-    , localSystem
+    , buildPlatform
     }:
     let
       eval = evalWithConfiguration {
         imports = [
           ./examples/installer/configuration.nix
         ];
-        nixpkgs.buildPlatform = knownSystems.${localSystem};
+        nixpkgs.buildPlatform = buildPlatform;
       } device;
     in
       eval // { inherit (eval.config.mobile) outputs; }
@@ -235,7 +254,7 @@ rec {
   };
 
   installer = {
-    pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; localSystem = "aarch64-linux"; }).outputs.default;
+    pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; buildPlatform = "aarch64-linux"; }).outputs.default;
   };
 
   # Overlays build native, and cross, according to shouldEvalOn
@@ -261,7 +280,7 @@ rec {
 
   cross-compiled = {
     installer = {
-      pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; localSystem = "x86_64-linux"; }).outputs.default;
+      pine64-pinephonepro = (evalInstaller { device = "pine64-pinephonepro"; buildPlatform = "x86_64-linux"; }).outputs.default;
     };
   };
 

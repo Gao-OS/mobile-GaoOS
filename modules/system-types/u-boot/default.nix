@@ -9,7 +9,7 @@ let
   cfg = config.mobile.quirks.u-boot;
   deviceName = config.mobile.device.name;
   kernel = stage-0.mobile.boot.stage-1.kernel.package;
-  kernel_file = "${kernel}/${if kernel ? file then kernel.file else pkgs.stdenv.hostPlatform.linux-kernel.target}";
+  kernel_file = "${kernel}/${if kernel ? file then kernel.file else kernel.target}";
   boot-partition = config.mobile.generatedFilesystems.boot.output;
 
   # Look-up table to translate from targetPlatform to U-Boot names.
@@ -165,18 +165,23 @@ in
 
         ext4.partitionID = "ED3902B6-920A-4971-BC07-966D4E021683";
         populateCommands = ''
-          mkdir -vp mobile-gaoos/{boot,recovery}
+          mkdir -vp mobile-gaoos/{boot,recovery,storage}
           (
-          cd mobile-gaoos/boot
-          cp -v ${stage-0.mobile.outputs.initrd} stage-1
+          cd mobile-gaoos/storage
           cp -v ${kernel_file} kernel
           cp -vr ${kernel}/dtbs dtbs
           )
           (
+          cd mobile-gaoos/boot
+          cp -v ${stage-0.mobile.outputs.initrd} stage-1
+          ln --symbolic --verbose ../storage/kernel kernel
+          ln --symbolic --verbose ../storage/dtbs dtbs
+          )
+          (
           cd mobile-gaoos/recovery
           cp -v ${recovery.mobile.outputs.initrd} stage-1
-          cp -v ${kernel_file} kernel
-          cp -vr ${kernel}/dtbs dtbs
+          ln --symbolic --verbose ../storage/kernel kernel
+          ln --symbolic --verbose ../storage/dtbs dtbs
           )
           cp -v ${bootscr} ./boot.scr
         '';
@@ -189,6 +194,8 @@ in
           disk-image = config.mobile.generatedDiskImages.disk-image.output;
         };
       };
+
+      hardware.deviceTree.enable = false;
     })
   ];
 }

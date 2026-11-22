@@ -1,25 +1,31 @@
 {
   mobile-gaoos
-, fetchurl
+, fetchFromGitLab
+, fetchpatch2
 , ...
 }:
 
 mobile-gaoos.kernel-builder {
-  version = "6.17.7";
+  version = "6.17.9";
   configfile = ./config.aarch64;
 
-  src = fetchurl {
-    url = "https://gitlab.com/pine64-org/linux/-/archive/ppp-6.17-20251104-2007/linux-ppp-6.17-20251104-2007.tar.gz";
-    sha256 = "0xyyn52js3wbwqarxifm3g30y26g804x6qdva1bz33s0rymh68fv";
+  src = fetchFromGitLab {
+    owner = "pine64-org";
+    repo = "linux";
+    rev = "ppp-6.17-20251127-0955";
+    hash = "sha256-jvo8zhzEeOBNSVQ2DJiCqk4pKGOEDCZYkf5pq/aESKg=";
   };
 
   patches = [
-    # USB Type-C: Enable OTG mode with role switching for gadget mode
     ./0001-arm64-dts-rockchip-set-type-c-dr_mode-as-otg.patch
-    # LEDs: Green on at boot, red as panic indicator
-    ./0001-dts-pinephone-pro-Setup-default-on-and-panic-LEDs.patch
-    # DWC3: Allow userspace USB role control without debugfs
-    ./0001-usb-dwc3-Enable-userspace-role-switch-control.patch
+    ./0002-dts-pinephone-pro-Setup-default-on-and-panic-LEDs.patch
+    ./0003-usb-dwc3-Enable-userspace-role-switch-control.patch
+    (fetchpatch2 {
+      # Fix battery status not being visible, see https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/4080
+      name = "tcpm-allow-looking-for-role_sw-device-in-the-main-no.patch";
+      url = "https://lore.kernel.org/all/20251127-fix-ppp-power-v1-1-52cdd74c0ee6@collabora.com/raw";
+      hash = "sha256-okWjTHV9N6MToGwOkOqBO1Yz8qv6zvBVbyx1HnEEU9w=";
+    })
   ];
 
   postInstall = ''

@@ -11,11 +11,8 @@ let
   cfg = config.mobile.boot.stage-1.gui;
   inherit (config.boot.initrd) luks;
 
-  # Compatibility: the xorg package set was dissolved into top-level in nixpkgs 25.11+.
-  # Older nixpkgs still has pkgs.xorg.*, newer throws on pkgs.xorg access.
-  xorgAvailable = (builtins.tryEval pkgs.xorg).success;
-  libX11 = if xorgAvailable then pkgs.xorg.libX11 else pkgs.libX11;
-  xkeyboard_config = if xorgAvailable then pkgs.xorg.xkeyboardconfig else pkgs.xkeyboard_config;
+  libX11 = pkgs.libx11 or pkgs.xorg.libX11;
+  xkeyboard_config = pkgs.xkeyboard-config or pkgs.xorg.xkeyboardconfig;
 
   minimalX11Config = pkgs.runCommand "minimalX11Config" {
     allowedReferences = [ "out" ];

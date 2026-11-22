@@ -43,7 +43,7 @@ rec {
         # This enables automatic cross-compilation when hostPlatform
         # (set by system-target.nix) differs from this buildPlatform.
         ({ lib, ... }: {
-          nixpkgs.buildPlatform = lib.mkDefault (lib.systems.elaborate pkgs.system);
+          nixpkgs.buildPlatform = lib.mkDefault pkgs.stdenv.hostPlatform.system;
         })
       ]
     ;
@@ -68,18 +68,10 @@ rec {
                 aarch64-linux = "generic-aarch64";
                 armv7l-linux = "generic-armv7l";
               }.${buildingForSystem};
-              nixpkgs.buildPlatform = knownSystems.${system};
+              nixpkgs.buildPlatform = system;
             }
           ];
         };
-      };
-
-      # Shortcuts from a simple system name to the structure required for
-      # localSystem and crossSystem
-      knownSystems = {
-        x86_64-linux  = lib.systems.examples.gnu64;
-        aarch64-linux = lib.systems.examples.aarch64-multiplatform;
-        armv7l-linux  = lib.systems.examples.armv7l-hf-multiplatform;
       };
 
       # Eval with a configuration, for the given device.

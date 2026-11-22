@@ -58,7 +58,7 @@ in
     # Totally not upstreamable stuff.
     #
 
-    xf86videofbdev = super.xf86videofbdev.overrideAttrs({patches ? [], ...}: {
+    xf86-video-fbdev = (super.xf86-video-fbdev or super.xorg.xf86videofbdev).overrideAttrs({patches ? [], ...}: {
       patches = patches ++ [
         ./xserver/0001-HACK-fbdev-don-t-bail-on-mode-initialization-fail.patch
       ];

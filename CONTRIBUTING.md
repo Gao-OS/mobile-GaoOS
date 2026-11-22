@@ -4,6 +4,8 @@ You don't need to write code to help contributing with Mobile GaoOS.
 
 As Mobile GaoOS is a superset on top of NixOS, you should read the [contributing guidelines](https://github.com/NixOS/nixpkgs/blob/master/CONTRIBUTING.md) of the NixOS project. Many of the points apply just the same with Mobile GaoOS.
 
+For contributions sent to Mobile NixOS upstream, follow its [contribution guidelines, including its policy on AI assistance](https://github.com/NixOS/mobile-nixos/blob/development/CONTRIBUTING.adoc).
+
 ## Opening issues
 
 Issues you face when using or working with Mobile GaoOS should be filed on [the project's issue tracker](https://github.com/Gao-OS/Mobile-GaoOS/issues).
